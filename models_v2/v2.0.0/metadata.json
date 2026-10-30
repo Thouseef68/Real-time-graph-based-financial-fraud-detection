@@ -1,0 +1,33 @@
+{
+  "model_version": "2.0.0",
+  "created_at": "2026-10-29T17:28:25Z",
+  "seed": 42,
+  "data_hash": "2f2cbe5265c061e1",
+  "git_commit": "0620ba137147f0676091c81c548645a8795368cc",
+  "n_features": 41,
+  "best_hyperparameters": {
+    "n_estimators": 350,
+    "max_depth": 7,
+    "learning_rate": 0.02176089279370084,
+    "subsample": 0.873035526734172,
+    "colsample_bytree": 0.8171377578051315,
+    "scale_pos_weight": 3.595708935935877
+  },
+  "metrics": {
+    "val_pr_auc": 0.9998373976326822,
+    "val_roc_auc": 0.999978919467945,
+    "val_recall_at_1pct_alert": 0.976678445229682,
+    "val_recall_at_0_5pct_alert": 0.976678445229682,
+    "val_rows": 8606,
+    "val_fraud_count": 1415
+  },
+  "thresholds": {
+    "alert_budget_1pct": 1.0,
+    "alert_budget_0_5pct": 1.0,
+    "cost_optimal": 0.059494949494949496,
+    "tier_allow_max": 0.4,
+    "tier_step_up_max": 0.8,
+    "tier_review_max": 1.5,
+    "tier_block_min": 1.5
+  }
+}

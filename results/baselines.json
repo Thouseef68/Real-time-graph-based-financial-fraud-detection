@@ -1,0 +1,41 @@
+{
+  "results": {
+    "rule: orig_drained only": {
+      "pr_auc": 0.05173494379917144,
+      "roc_auc": 0.8464080994478931,
+      "precision_at_recall_90": 0.05319774480301615
+    },
+    "logistic regression (all features)": {
+      "pr_auc": 0.2815641388663597,
+      "roc_auc": 0.9355578743883185,
+      "precision_at_recall_90": 0.05754332721028672
+    },
+    "xgboost: all features": {
+      "pr_auc": 0.9876523007713349,
+      "roc_auc": 0.9997868308277681,
+      "precision_at_recall_90": 0.9612097304404996
+    },
+    "xgboost: without drain features": {
+      "pr_auc": 0.3600708313400914,
+      "roc_auc": 0.919810213242721,
+      "precision_at_recall_90": 0.049116310385456996
+    },
+    "xgboost: without velocity features": {
+      "pr_auc": 0.989838240820439,
+      "roc_auc": 0.9996291604150118,
+      "precision_at_recall_90": 0.9664879356568364
+    },
+    "xgboost: without drain + velocity": {
+      "pr_auc": 0.18441250417045235,
+      "roc_auc": 0.8062747553273906,
+      "precision_at_recall_90": 0.025406255460422855
+    }
+  },
+  "best_iterations": {
+    "xgboost: all features": 7,
+    "xgboost: without drain features": 50,
+    "xgboost: without velocity features": 273,
+    "xgboost: without drain + velocity": 0
+  },
+  "test_fraud_rate": 0.015448041477991368
+}

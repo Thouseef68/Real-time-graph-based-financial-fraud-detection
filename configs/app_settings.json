@@ -1,0 +1,11 @@
+{
+  "threshold_allow_max": 0.1,
+  "threshold_step_up_max": 0.3,
+  "threshold_review_max": 0.65,
+  "threshold_block_min": 0.7,
+  "cost_fp": 1.0,
+  "cost_fn": 10.0,
+  "cost_review": 1.0,
+  "confirmation_delay_hours": 24,
+  "demo_reveal": false
+}

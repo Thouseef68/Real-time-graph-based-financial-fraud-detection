@@ -1,0 +1,227 @@
+{
+  "session_id": "session_PERF_55C1_1793355871",
+  "room_code": "PERF_55C1",
+  "created_at": 1793355871.6520064,
+  "updated_at": 1793355871.7353895,
+  "total_events": 7,
+  "events": [
+    {
+      "seq": 1,
+      "timestamp": 1793355871.6539953,
+      "event_type": "participant_joined",
+      "data": {
+        "account_id": "CUST_P1_A371",
+        "display_name": "P1",
+        "balance": 10000.0,
+        "device_id": "DEV_P1",
+        "user_agent": "UA",
+        "raw_ip": "127.0.0.1",
+        "network_label": "Campus-WiFi",
+        "joined_at": 1793355871.653285,
+        "is_bot": false,
+        "role_card": {
+          "role_id": "VICTIM_1",
+          "title": "Unsuspecting Victim (Push Payment)",
+          "badge": "Victim",
+          "instructions": "You received an urgent SMS requesting payment. Send \u20b92,500 to Member A.",
+          "suggested_target": "MEMBER_A",
+          "suggested_amount": 2500.0
+        }
+      }
+    },
+    {
+      "seq": 2,
+      "timestamp": 1793355871.6539953,
+      "event_type": "participant_joined",
+      "data": {
+        "account_id": "CUST_P2_FCC9",
+        "display_name": "P2",
+        "balance": 10000.0,
+        "device_id": "DEV_P2",
+        "user_agent": "UA",
+        "raw_ip": "127.0.0.1",
+        "network_label": "Campus-WiFi",
+        "joined_at": 1793355871.6539953,
+        "is_bot": false,
+        "role_card": {
+          "role_id": "VICTIM_2",
+          "title": "Phishing Target",
+          "badge": "Victim",
+          "instructions": "Transfer \u20b93,000 to Member A for an alleged utility invoice refund.",
+          "suggested_target": "MEMBER_A",
+          "suggested_amount": 3000.0
+        }
+      }
+    },
+    {
+      "seq": 3,
+      "timestamp": 1793355871.6708598,
+      "event_type": "transfer_completed",
+      "data": {
+        "txn_id": "TXN_PERF_55C1_1793355871653",
+        "sender": "CUST_P1_A371",
+        "receiver": "CUST_P2_FCC9",
+        "amount": 10.0,
+        "decision": {
+          "txn_id": "TXN_PERF_55C1_1793355871653",
+          "score": 0.0,
+          "tier": "ALLOW",
+          "summary": "Transaction appears normal; activity is consistent with account history.",
+          "action": "Authorize",
+          "reasons": [],
+          "latency_ms": 17.444,
+          "profile": "demo_sensitivity",
+          "timestamp": 1793355871.6708598
+        },
+        "response": {
+          "status": "PROCESSED",
+          "customer_message": "Payment sent successfully.",
+          "txn_id": "TXN_PERF_55C1_1793355871653",
+          "amount": 10.0,
+          "sender_id": "CUST_P1_A371",
+          "receiver_id": "CUST_P2_FCC9",
+          "sender_balance": 9990.0,
+          "tier": "ALLOW",
+          "latency_ms": 17.444,
+          "profile": "demo_sensitivity"
+        }
+      }
+    },
+    {
+      "seq": 4,
+      "timestamp": 1793355871.6868582,
+      "event_type": "transfer_completed",
+      "data": {
+        "txn_id": "TXN_PERF_55C1_1793355871670",
+        "sender": "CUST_P1_A371",
+        "receiver": "CUST_P2_FCC9",
+        "amount": 10.0,
+        "decision": {
+          "txn_id": "TXN_PERF_55C1_1793355871670",
+          "score": 0.0,
+          "tier": "ALLOW",
+          "summary": "Transaction appears normal; activity is consistent with account history.",
+          "action": "Authorize",
+          "reasons": [],
+          "latency_ms": 15.467,
+          "profile": "demo_sensitivity",
+          "timestamp": 1793355871.6868582
+        },
+        "response": {
+          "status": "PROCESSED",
+          "customer_message": "Payment sent successfully.",
+          "txn_id": "TXN_PERF_55C1_1793355871670",
+          "amount": 10.0,
+          "sender_id": "CUST_P1_A371",
+          "receiver_id": "CUST_P2_FCC9",
+          "sender_balance": 9980.0,
+          "tier": "ALLOW",
+          "latency_ms": 15.467,
+          "profile": "demo_sensitivity"
+        }
+      }
+    },
+    {
+      "seq": 5,
+      "timestamp": 1793355871.7028584,
+      "event_type": "transfer_completed",
+      "data": {
+        "txn_id": "TXN_PERF_55C1_1793355871686",
+        "sender": "CUST_P1_A371",
+        "receiver": "CUST_P2_FCC9",
+        "amount": 10.0,
+        "decision": {
+          "txn_id": "TXN_PERF_55C1_1793355871686",
+          "score": 0.0,
+          "tier": "ALLOW",
+          "summary": "Transaction appears normal; activity is consistent with account history.",
+          "action": "Authorize",
+          "reasons": [],
+          "latency_ms": 15.503,
+          "profile": "demo_sensitivity",
+          "timestamp": 1793355871.7018566
+        },
+        "response": {
+          "status": "PROCESSED",
+          "customer_message": "Payment sent successfully.",
+          "txn_id": "TXN_PERF_55C1_1793355871686",
+          "amount": 10.0,
+          "sender_id": "CUST_P1_A371",
+          "receiver_id": "CUST_P2_FCC9",
+          "sender_balance": 9970.0,
+          "tier": "ALLOW",
+          "latency_ms": 15.503,
+          "profile": "demo_sensitivity"
+        }
+      }
+    },
+    {
+      "seq": 6,
+      "timestamp": 1793355871.7188642,
+      "event_type": "transfer_completed",
+      "data": {
+        "txn_id": "TXN_PERF_55C1_1793355871702",
+        "sender": "CUST_P1_A371",
+        "receiver": "CUST_P2_FCC9",
+        "amount": 10.0,
+        "decision": {
+          "txn_id": "TXN_PERF_55C1_1793355871702",
+          "score": 0.0,
+          "tier": "ALLOW",
+          "summary": "Transaction appears normal; activity is consistent with account history.",
+          "action": "Authorize",
+          "reasons": [],
+          "latency_ms": 16.07,
+          "profile": "demo_sensitivity",
+          "timestamp": 1793355871.7188642
+        },
+        "response": {
+          "status": "PROCESSED",
+          "customer_message": "Payment sent successfully.",
+          "txn_id": "TXN_PERF_55C1_1793355871702",
+          "amount": 10.0,
+          "sender_id": "CUST_P1_A371",
+          "receiver_id": "CUST_P2_FCC9",
+          "sender_balance": 9960.0,
+          "tier": "ALLOW",
+          "latency_ms": 16.07,
+          "profile": "demo_sensitivity"
+        }
+      }
+    },
+    {
+      "seq": 7,
+      "timestamp": 1793355871.7343872,
+      "event_type": "transfer_completed",
+      "data": {
+        "txn_id": "TXN_PERF_55C1_1793355871718",
+        "sender": "CUST_P1_A371",
+        "receiver": "CUST_P2_FCC9",
+        "amount": 10.0,
+        "decision": {
+          "txn_id": "TXN_PERF_55C1_1793355871718",
+          "score": 0.0,
+          "tier": "ALLOW",
+          "summary": "Transaction appears normal; activity is consistent with account history.",
+          "action": "Authorize",
+          "reasons": [],
+          "latency_ms": 15.493,
+          "profile": "demo_sensitivity",
+          "timestamp": 1793355871.7343872
+        },
+        "response": {
+          "status": "PROCESSED",
+          "customer_message": "Payment sent successfully.",
+          "txn_id": "TXN_PERF_55C1_1793355871718",
+          "amount": 10.0,
+          "sender_id": "CUST_P1_A371",
+          "receiver_id": "CUST_P2_FCC9",
+          "sender_balance": 9950.0,
+          "tier": "ALLOW",
+          "latency_ms": 15.493,
+          "profile": "demo_sensitivity"
+        }
+      }
+    }
+  ]
+}

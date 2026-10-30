@@ -1,0 +1,8 @@
+{
+  "val_pr_auc": 0.9998373976326822,
+  "val_roc_auc": 0.999978919467945,
+  "val_recall_at_1pct_alert": 0.976678445229682,
+  "val_recall_at_0_5pct_alert": 0.976678445229682,
+  "val_rows": 8606,
+  "val_fraud_count": 1415
+}

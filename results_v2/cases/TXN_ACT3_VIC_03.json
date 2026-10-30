@@ -1,0 +1,478 @@
+{
+  "case_id": "case_TXN_ACT3_VIC_03",
+  "txn_id": "TXN_ACT3_VIC_03",
+  "account_id": "CUST_VICTIM_03",
+  "payee_id": "unknown",
+  "amount": 4100.0,
+  "step": 0,
+  "score": 0.0,
+  "tier": "BLOCK",
+  "summary": "Critical risk detected: More than 11 transactions in the last hour totalling \u20b945100.",
+  "recommended_action": "Block transaction immediately and lock account pending identity verification.",
+  "reasons": [
+    {
+      "title": "High-frequency transactions",
+      "explanation": "More than 11 transactions in the last hour totalling \u20b945100",
+      "severity": "high",
+      "evidence": {
+        "count_1h": 11.0,
+        "sum_1h": 45100.0
+      }
+    },
+    {
+      "title": "Unusual number of incoming senders",
+      "explanation": "Payee received funds from 11 distinct senders in 24 hours",
+      "severity": "high",
+      "evidence": {
+        "payee_fan_in_24h": 11.0
+      }
+    },
+    {
+      "title": "New Device Used",
+      "explanation": "Transaction originated from a device never before linked to this account",
+      "severity": "medium",
+      "evidence": {
+        "is_new_device": 0.0,
+        "shap_importance": 0.356
+      }
+    }
+  ],
+  "rule_hits": [
+    {
+      "rule_id": "velocity_cap_1h",
+      "rule_name": "Velocity Cap (1h)",
+      "title": "High-frequency transactions",
+      "explanation": "More than 11 transactions in the last hour totalling \u20b945100",
+      "severity": "high",
+      "evidence": {
+        "count_1h": 11.0,
+        "sum_1h": 45100.0
+      }
+    },
+    {
+      "rule_id": "high_fan_in",
+      "rule_name": "High Fan-In",
+      "title": "Unusual number of incoming senders",
+      "explanation": "Payee received funds from 11 distinct senders in 24 hours",
+      "severity": "high",
+      "evidence": {
+        "payee_fan_in_24h": 11.0
+      }
+    }
+  ],
+  "features": {
+    "amount": 4100.0,
+    "type_code": 4.0,
+    "amount_to_balance": 4100.0,
+    "orig_drained": 0.0,
+    "new_balance_to_old": 0.0,
+    "balance_change_ratio": 0.0,
+    "count_1h": 11.0,
+    "sum_1h": 45100.0,
+    "distinct_payees_1h": 1.0,
+    "amount_vs_sum_1h": 0.09090707523114787,
+    "count_6h": 11.0,
+    "sum_6h": 45100.0,
+    "distinct_payees_6h": 1.0,
+    "amount_vs_sum_6h": 0.09090707523114787,
+    "count_24h": 11.0,
+    "sum_24h": 45100.0,
+    "distinct_payees_24h": 1.0,
+    "amount_vs_sum_24h": 0.09090707523114787,
+    "amount_zscore": 0.0,
+    "new_payee_flag": 0.0,
+    "payee_first_seen_age": 0.0,
+    "hour_deviation": 7.228571428571429,
+    "time_since_last_txn": 0.0,
+    "dormancy_days": 0.0,
+    "device_count": 1.0,
+    "ip_prefix_count": 1.0,
+    "is_new_device": 0.0,
+    "accounts_per_device": 1.0,
+    "devices_per_account": 1.0,
+    "ip_prefix_sharing_count": 1.0,
+    "device_first_seen_age": 0.0,
+    "payee_fan_in_1h": 11.0,
+    "payee_fan_in_24h": 11.0,
+    "payee_outflow_inflow_ratio_24h": 0.00023635958960096593,
+    "payee_pass_through_flag": 0.0,
+    "is_merchant": 0.0,
+    "fraud_exposure_2hop": 0.0,
+    "degree": 16.0,
+    "pagerank": 0.021621621621621623,
+    "isolation_forest_score": 0.8813618421554565,
+    "autoencoder_reconstruction_error": 0.9736230373382568
+  },
+  "subgraph": {
+    "center_account": "CUST_VICTIM_03",
+    "node_count": 19,
+    "edge_count": 19,
+    "nodes": [
+      {
+        "data": {
+          "id": "DEV_VIC_03",
+          "label": "DEV_VIC_03",
+          "type": "device",
+          "is_fraud": 0,
+          "is_merchant": false,
+          "degree": 2
+        }
+      },
+      {
+        "data": {
+          "id": "CUST_MULE_A",
+          "label": "CUST_MULE_A",
+          "type": "account",
+          "is_fraud": 1,
+          "is_merchant": false,
+          "degree": 16
+        }
+      },
+      {
+        "data": {
+          "id": "CUST_VICTIM_05",
+          "label": "CUST_VICTIM_05",
+          "type": "account",
+          "is_fraud": 1,
+          "is_merchant": false,
+          "degree": 1
+        }
+      },
+      {
+        "data": {
+          "id": "CUST_VICTIM_11",
+          "label": "CUST_VICTIM_11",
+          "type": "account",
+          "is_fraud": 1,
+          "is_merchant": false,
+          "degree": 1
+        }
+      },
+      {
+        "data": {
+          "id": "CUST_VICTIM_07",
+          "label": "CUST_VICTIM_07",
+          "type": "account",
+          "is_fraud": 1,
+          "is_merchant": false,
+          "degree": 1
+        }
+      },
+      {
+        "data": {
+          "id": "CUST_VICTIM_08",
+          "label": "CUST_VICTIM_08",
+          "type": "account",
+          "is_fraud": 1,
+          "is_merchant": false,
+          "degree": 1
+        }
+      },
+      {
+        "data": {
+          "id": "CUST_VICTIM_12",
+          "label": "CUST_VICTIM_12",
+          "type": "account",
+          "is_fraud": 1,
+          "is_merchant": false,
+          "degree": 1
+        }
+      },
+      {
+        "data": {
+          "id": "172.16.3.2",
+          "label": "172.16.3.2",
+          "type": "ip_prefix",
+          "is_fraud": 0,
+          "is_merchant": false,
+          "degree": 1
+        }
+      },
+      {
+        "data": {
+          "id": "CUST_MULE_B",
+          "label": "CUST_MULE_B",
+          "type": "account",
+          "is_fraud": 1,
+          "is_merchant": false,
+          "degree": 2
+        }
+      },
+      {
+        "data": {
+          "id": "DEV_MULE_A1",
+          "label": "DEV_MULE_A1",
+          "type": "device",
+          "is_fraud": 0,
+          "is_merchant": false,
+          "degree": 1
+        }
+      },
+      {
+        "data": {
+          "id": "CUST_VICTIM_03",
+          "label": "CUST_VICTIM_03",
+          "type": "account",
+          "is_fraud": 1,
+          "is_merchant": false,
+          "degree": 2
+        }
+      },
+      {
+        "data": {
+          "id": "MERCHANT_MOBILE_RECHARGE",
+          "label": "MERCHANT_MOBILE_RECHARGE",
+          "type": "account",
+          "is_fraud": 0,
+          "is_merchant": true,
+          "degree": 2
+        }
+      },
+      {
+        "data": {
+          "id": "CUST_VICTIM_09",
+          "label": "CUST_VICTIM_09",
+          "type": "account",
+          "is_fraud": 1,
+          "is_merchant": false,
+          "degree": 1
+        }
+      },
+      {
+        "data": {
+          "id": "CUST_VICTIM_04",
+          "label": "CUST_VICTIM_04",
+          "type": "account",
+          "is_fraud": 1,
+          "is_merchant": false,
+          "degree": 1
+        }
+      },
+      {
+        "data": {
+          "id": "MERCHANT_UNREGISTERED_RELOAD",
+          "label": "MERCHANT_UNREGISTERED_RELOAD",
+          "type": "account",
+          "is_fraud": 0,
+          "is_merchant": true,
+          "degree": 1
+        }
+      },
+      {
+        "data": {
+          "id": "CUST_VICTIM_06",
+          "label": "CUST_VICTIM_06",
+          "type": "account",
+          "is_fraud": 1,
+          "is_merchant": false,
+          "degree": 1
+        }
+      },
+      {
+        "data": {
+          "id": "CUST_VICTIM_02",
+          "label": "CUST_VICTIM_02",
+          "type": "account",
+          "is_fraud": 1,
+          "is_merchant": false,
+          "degree": 1
+        }
+      },
+      {
+        "data": {
+          "id": "CUST_VICTIM_01",
+          "label": "CUST_VICTIM_01",
+          "type": "account",
+          "is_fraud": 1,
+          "is_merchant": false,
+          "degree": 1
+        }
+      },
+      {
+        "data": {
+          "id": "CUST_VICTIM_10",
+          "label": "CUST_VICTIM_10",
+          "type": "account",
+          "is_fraud": 1,
+          "is_merchant": false,
+          "degree": 1
+        }
+      }
+    ],
+    "edges": [
+      {
+        "data": {
+          "source": "DEV_VIC_03",
+          "target": "172.16.3.2",
+          "amount": 0.0,
+          "step": 703,
+          "type": "ON_IP"
+        }
+      },
+      {
+        "data": {
+          "source": "CUST_MULE_A",
+          "target": "MERCHANT_MOBILE_RECHARGE",
+          "amount": 10.0,
+          "step": 702,
+          "type": "TRANSFER"
+        }
+      },
+      {
+        "data": {
+          "source": "CUST_MULE_A",
+          "target": "DEV_MULE_A1",
+          "amount": 0.0,
+          "step": 702,
+          "type": "USED_DEVICE"
+        }
+      },
+      {
+        "data": {
+          "source": "CUST_MULE_A",
+          "target": "CUST_MULE_B",
+          "amount": 48000.0,
+          "step": 704,
+          "type": "TRANSFER"
+        }
+      },
+      {
+        "data": {
+          "source": "CUST_MULE_A",
+          "target": "MERCHANT_UNREGISTERED_RELOAD",
+          "amount": 25000.0,
+          "step": 705,
+          "type": "TRANSFER"
+        }
+      },
+      {
+        "data": {
+          "source": "CUST_VICTIM_05",
+          "target": "CUST_MULE_A",
+          "amount": 4500.0,
+          "step": 703,
+          "type": "TRANSFER"
+        }
+      },
+      {
+        "data": {
+          "source": "CUST_VICTIM_11",
+          "target": "CUST_MULE_A",
+          "amount": 3800.0,
+          "step": 703,
+          "type": "TRANSFER"
+        }
+      },
+      {
+        "data": {
+          "source": "CUST_VICTIM_07",
+          "target": "CUST_MULE_A",
+          "amount": 4000.0,
+          "step": 703,
+          "type": "TRANSFER"
+        }
+      },
+      {
+        "data": {
+          "source": "CUST_VICTIM_08",
+          "target": "CUST_MULE_A",
+          "amount": 4300.0,
+          "step": 703,
+          "type": "TRANSFER"
+        }
+      },
+      {
+        "data": {
+          "source": "CUST_VICTIM_12",
+          "target": "CUST_MULE_A",
+          "amount": 4250.0,
+          "step": 703,
+          "type": "TRANSFER"
+        }
+      },
+      {
+        "data": {
+          "source": "CUST_MULE_B",
+          "target": "MERCHANT_MOBILE_RECHARGE",
+          "amount": 10.0,
+          "step": 702,
+          "type": "TRANSFER"
+        }
+      },
+      {
+        "data": {
+          "source": "CUST_VICTIM_03",
+          "target": "CUST_MULE_A",
+          "amount": 4100.0,
+          "step": 703,
+          "type": "TRANSFER"
+        }
+      },
+      {
+        "data": {
+          "source": "CUST_VICTIM_03",
+          "target": "DEV_VIC_03",
+          "amount": 0.0,
+          "step": 703,
+          "type": "USED_DEVICE"
+        }
+      },
+      {
+        "data": {
+          "source": "CUST_VICTIM_09",
+          "target": "CUST_MULE_A",
+          "amount": 3950.0,
+          "step": 703,
+          "type": "TRANSFER"
+        }
+      },
+      {
+        "data": {
+          "source": "CUST_VICTIM_04",
+          "target": "CUST_MULE_A",
+          "amount": 3900.0,
+          "step": 703,
+          "type": "TRANSFER"
+        }
+      },
+      {
+        "data": {
+          "source": "CUST_VICTIM_06",
+          "target": "CUST_MULE_A",
+          "amount": 3750.0,
+          "step": 703,
+          "type": "TRANSFER"
+        }
+      },
+      {
+        "data": {
+          "source": "CUST_VICTIM_02",
+          "target": "CUST_MULE_A",
+          "amount": 3850.0,
+          "step": 703,
+          "type": "TRANSFER"
+        }
+      },
+      {
+        "data": {
+          "source": "CUST_VICTIM_01",
+          "target": "CUST_MULE_A",
+          "amount": 4200.0,
+          "step": 703,
+          "type": "TRANSFER"
+        }
+      },
+      {
+        "data": {
+          "source": "CUST_VICTIM_10",
+          "target": "CUST_MULE_A",
+          "amount": 4150.0,
+          "step": 703,
+          "type": "TRANSFER"
+        }
+      }
+    ]
+  },
+  "timeline": [],
+  "created_at": ""
+}

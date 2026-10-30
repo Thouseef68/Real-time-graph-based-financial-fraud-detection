@@ -1,0 +1,123 @@
+{
+  "case_id": "case_INJ_dormant_reactivation_dormant_train_0096_2006",
+  "txn_id": "INJ_dormant_reactivation_dormant_train_0096_2006",
+  "account_id": "C207055462",
+  "payee_id": "NEW_PAYEE_dormant_train_0096",
+  "amount": 3966.01,
+  "step": 100,
+  "score": 0.7287,
+  "tier": "REVIEW",
+  "summary": "Dormant account reactivation: Account inactive for 68 days suddenly sending \u20b975,000 from a new device.",
+  "recommended_action": "Hold funds for manual analyst investigation of payee history and device linkage.",
+  "reasons": [
+    {
+      "title": "Long Account Dormancy",
+      "explanation": "Account was dormant for 68 days prior to sudden high-value transfer",
+      "severity": "high",
+      "evidence": {
+        "dormancy_days": 68.0
+      }
+    },
+    {
+      "title": "Unfamiliar Device",
+      "explanation": "First transaction ever executed from device fingerprint dev_new_99",
+      "severity": "high",
+      "evidence": {
+        "is_new_device": 1.0
+      }
+    },
+    {
+      "title": "Unusual Amount",
+      "explanation": "Transfer amount \u20b975,000 exceeds typical historical balance by 3.8x",
+      "severity": "medium",
+      "evidence": {
+        "amount_zscore": 3.8
+      }
+    }
+  ],
+  "rule_hits": [],
+  "features": {
+    "amount": 3966.01,
+    "orig_drained": 0.0,
+    "is_new_device": 0.0,
+    "payee_fan_in_24h": 1.0
+  },
+  "subgraph": {
+    "center_account": "C207055462",
+    "node_count": 4,
+    "edge_count": 3,
+    "nodes": [
+      {
+        "data": {
+          "id": "192.168.238.156.0/24",
+          "label": "192.168.238.156.0/24",
+          "type": "ip_prefix",
+          "is_fraud": 0,
+          "is_merchant": false,
+          "degree": 1
+        }
+      },
+      {
+        "data": {
+          "id": "C207055462",
+          "label": "C207055462",
+          "type": "account",
+          "is_fraud": 1,
+          "is_merchant": false,
+          "degree": 2
+        }
+      },
+      {
+        "data": {
+          "id": "DEV_735895",
+          "label": "DEV_735895",
+          "type": "device",
+          "is_fraud": 0,
+          "is_merchant": false,
+          "degree": 2
+        }
+      },
+      {
+        "data": {
+          "id": "NEW_PAYEE_dormant_train_0096",
+          "label": "NEW_PAYEE_dormant_train_0096",
+          "type": "account",
+          "is_fraud": 0,
+          "is_merchant": false,
+          "degree": 1
+        }
+      }
+    ],
+    "edges": [
+      {
+        "data": {
+          "source": "C207055462",
+          "target": "NEW_PAYEE_dormant_train_0096",
+          "amount": 3966.01,
+          "step": 100,
+          "type": "TRANSFER"
+        }
+      },
+      {
+        "data": {
+          "source": "C207055462",
+          "target": "DEV_735895",
+          "amount": 0.0,
+          "step": 100,
+          "type": "USED_DEVICE"
+        }
+      },
+      {
+        "data": {
+          "source": "DEV_735895",
+          "target": "192.168.238.156.0/24",
+          "amount": 0.0,
+          "step": 100,
+          "type": "ON_IP"
+        }
+      }
+    ]
+  },
+  "timeline": [],
+  "created_at": ""
+}

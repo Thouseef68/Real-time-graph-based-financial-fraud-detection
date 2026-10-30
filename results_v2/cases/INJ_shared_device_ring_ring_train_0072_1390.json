@@ -1,0 +1,142 @@
+{
+  "case_id": "case_INJ_shared_device_ring_ring_train_0072_1390",
+  "txn_id": "INJ_shared_device_ring_ring_train_0072_1390",
+  "account_id": "C1622764101",
+  "payee_id": "C2056765627",
+  "amount": 2390.92,
+  "step": 134,
+  "score": 0.9305,
+  "tier": "BLOCK",
+  "summary": "Synthetic identity / device ring: 8 distinct accounts operating from a single hardware device.",
+  "recommended_action": "Block transaction immediately and lock account pending identity verification.",
+  "reasons": [
+    {
+      "title": "Shared Hardware Fingerprint",
+      "explanation": "Device ID dev_ring_08 is simultaneously associated with 8 active customer accounts",
+      "severity": "critical",
+      "evidence": {
+        "accounts_per_device": 8.0
+      }
+    },
+    {
+      "title": "Circular Fund Layering",
+      "explanation": "Repeated back-and-forth transfers detected between co-located accounts",
+      "severity": "high",
+      "evidence": {
+        "fraud_exposure_2hop": 4.0
+      }
+    },
+    {
+      "title": "Subnet Colocation",
+      "explanation": "All 8 accounts share IP subnet 10.42.100.0/24",
+      "severity": "medium",
+      "evidence": {
+        "ip_prefix_sharing_count": 8.0
+      }
+    }
+  ],
+  "rule_hits": [],
+  "features": {
+    "amount": 2390.92,
+    "orig_drained": 0.0,
+    "is_new_device": 1.0,
+    "payee_fan_in_24h": 1.0
+  },
+  "subgraph": {
+    "center_account": "C1622764101",
+    "node_count": 5,
+    "edge_count": 4,
+    "nodes": [
+      {
+        "data": {
+          "id": "DEV_RING_ring_train_0072",
+          "label": "DEV_RING_ring_train_0072",
+          "type": "device",
+          "is_fraud": 0,
+          "is_merchant": false,
+          "degree": 2
+        }
+      },
+      {
+        "data": {
+          "id": "C2056765627",
+          "label": "C2056765627",
+          "type": "account",
+          "is_fraud": 0,
+          "is_merchant": false,
+          "degree": 1
+        }
+      },
+      {
+        "data": {
+          "id": "172.27.141.0/24",
+          "label": "172.27.141.0/24",
+          "type": "ip_prefix",
+          "is_fraud": 0,
+          "is_merchant": false,
+          "degree": 1
+        }
+      },
+      {
+        "data": {
+          "id": "COMMON_PAY_ring_train_0072",
+          "label": "COMMON_PAY_ring_train_0072",
+          "type": "account",
+          "is_fraud": 0,
+          "is_merchant": false,
+          "degree": 1
+        }
+      },
+      {
+        "data": {
+          "id": "C1622764101",
+          "label": "C1622764101",
+          "type": "account",
+          "is_fraud": 1,
+          "is_merchant": false,
+          "degree": 3
+        }
+      }
+    ],
+    "edges": [
+      {
+        "data": {
+          "source": "DEV_RING_ring_train_0072",
+          "target": "172.27.141.0/24",
+          "amount": 0.0,
+          "step": 134,
+          "type": "ON_IP"
+        }
+      },
+      {
+        "data": {
+          "source": "C1622764101",
+          "target": "COMMON_PAY_ring_train_0072",
+          "amount": 956.37,
+          "step": 134,
+          "type": "TRANSFER"
+        }
+      },
+      {
+        "data": {
+          "source": "C1622764101",
+          "target": "DEV_RING_ring_train_0072",
+          "amount": 0.0,
+          "step": 134,
+          "type": "USED_DEVICE"
+        }
+      },
+      {
+        "data": {
+          "source": "C1622764101",
+          "target": "C2056765627",
+          "amount": 2390.92,
+          "step": 134,
+          "type": "TRANSFER"
+        }
+      }
+    ]
+  },
+  "timeline": [],
+  "created_at": ""
+}

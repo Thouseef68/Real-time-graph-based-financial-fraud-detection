@@ -1,0 +1,147 @@
+{
+  "ks_statistics": {
+    "large_legitimate_drain": {
+      "txn_type": "TRANSFER",
+      "n_injected": 20,
+      "amount_ks_stat": 0.245,
+      "amount_pvalue": 0.15277021736935148,
+      "old_balance_ks_stat": 0.866,
+      "old_balance_pvalue": 7.068461806457968e-18,
+      "new_balance_ks_stat": 0.9565,
+      "new_balance_pvalue": 1.1782873319864856e-27
+    },
+    "mule_fanin_fanout": {
+      "txn_type": "TRANSFER",
+      "n_injected": 690,
+      "amount_ks_stat": 0.3456,
+      "amount_pvalue": 5.082244345294713e-74,
+      "old_balance_ks_stat": 0.8332,
+      "old_balance_pvalue": 0.0,
+      "new_balance_ks_stat": 0.9598,
+      "new_balance_pvalue": 0.0
+    },
+    "structuring": {
+      "txn_type": "TRANSFER",
+      "n_injected": 120,
+      "amount_ks_stat": 0.9884,
+      "amount_pvalue": 1.668256362612658e-232,
+      "old_balance_ks_stat": 0.7917,
+      "old_balance_pvalue": 7.162130980259358e-81,
+      "new_balance_ks_stat": 0.9618,
+      "new_balance_pvalue": 1.457231533593896e-170
+    },
+    "payroll": {
+      "txn_type": "TRANSFER",
+      "n_injected": 1000,
+      "amount_ks_stat": 0.9403,
+      "amount_pvalue": 0.0,
+      "old_balance_ks_stat": 0.9845,
+      "old_balance_pvalue": 0.0,
+      "new_balance_ks_stat": 0.9947,
+      "new_balance_pvalue": 0.0
+    },
+    "household_shared_device": {
+      "txn_type": "TRANSFER",
+      "n_injected": 324,
+      "amount_ks_stat": 0.6079,
+      "amount_pvalue": 2.1390852240994092e-115,
+      "old_balance_ks_stat": 0.8319,
+      "old_balance_pvalue": 9.474298438903508e-250,
+      "new_balance_ks_stat": 0.9648,
+      "new_balance_pvalue": 0.0
+    },
+    "burst_takeover": {
+      "txn_type": "TRANSFER",
+      "n_injected": 904,
+      "amount_ks_stat": 0.5568,
+      "amount_pvalue": 8.854673848364e-264,
+      "old_balance_ks_stat": 0.654,
+      "old_balance_pvalue": 0.0,
+      "new_balance_ks_stat": 0.9582,
+      "new_balance_pvalue": 0.0
+    },
+    "merchant_high_fanin": {
+      "txn_type": "PAYMENT",
+      "n_injected": 1500,
+      "amount_ks_stat": 0.0496,
+      "amount_pvalue": 0.001221767466839188,
+      "old_balance_ks_stat": 0.5011,
+      "old_balance_pvalue": 0.0,
+      "new_balance_ks_stat": 0.519,
+      "new_balance_pvalue": 0.0
+    },
+    "bill_payment_burst": {
+      "txn_type": "PAYMENT",
+      "n_injected": 127,
+      "amount_ks_stat": 0.0947,
+      "amount_pvalue": 0.19230366122953224,
+      "old_balance_ks_stat": 0.4631,
+      "old_balance_pvalue": 1.8557027840259118e-25,
+      "new_balance_ks_stat": 0.5117,
+      "new_balance_pvalue": 2.2345059427182737e-31
+    },
+    "dormant_reactivation": {
+      "txn_type": "TRANSFER",
+      "n_injected": 20,
+      "amount_ks_stat": 0.7244,
+      "amount_pvalue": 3.3954947944016044e-11,
+      "old_balance_ks_stat": 0.8231,
+      "old_balance_pvalue": 2.09672636451629e-15,
+      "new_balance_ks_stat": 0.9632,
+      "new_balance_pvalue": 4.131409397510119e-29
+    },
+    "shared_device_ring": {
+      "txn_type": "TRANSFER",
+      "n_injected": 672,
+      "amount_ks_stat": 0.4607,
+      "amount_pvalue": 8.311509184010105e-131,
+      "old_balance_ks_stat": 0.8675,
+      "old_balance_pvalue": 0.0,
+      "new_balance_ks_stat": 0.9707,
+      "new_balance_pvalue": 0.0
+    }
+  },
+  "group_pr_auc": {
+    "mule_fanin_fanout": {
+      "amount_balance_only": 0.1885,
+      "base": 0.2975,
+      "velocity": 0.8257,
+      "behavioural": 0.7787,
+      "device_network": 0.0937,
+      "graph": 0.2804
+    },
+    "structuring": {
+      "amount_balance_only": 0.0372,
+      "base": 0.8847,
+      "velocity": 0.6945,
+      "behavioural": 0.5018,
+      "device_network": 0.7084,
+      "graph": 0.0004
+    },
+    "burst_takeover": {
+      "amount_balance_only": 0.3051,
+      "base": 0.8242,
+      "velocity": 0.9369,
+      "behavioural": 0.9378,
+      "device_network": 0.656,
+      "graph": 0.786
+    },
+    "dormant_reactivation": {
+      "amount_balance_only": 0.0005,
+      "base": 0.0078,
+      "velocity": 0.0,
+      "behavioural": 0.0,
+      "device_network": 0.0,
+      "graph": 0.0001
+    },
+    "shared_device_ring": {
+      "amount_balance_only": 0.186,
+      "base": 0.6275,
+      "velocity": 0.8028,
+      "behavioural": 0.7839,
+      "device_network": 0.9708,
+      "graph": 0.7453
+    }
+  },
+  "flaws_detected": []
+}

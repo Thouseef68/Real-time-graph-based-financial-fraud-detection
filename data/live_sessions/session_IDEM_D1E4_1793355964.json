@@ -1,0 +1,91 @@
+{
+  "session_id": "session_IDEM_D1E4_1793355964",
+  "room_code": "IDEM_D1E4",
+  "created_at": 1793355964.6891065,
+  "updated_at": 1793355964.7069225,
+  "total_events": 3,
+  "events": [
+    {
+      "seq": 1,
+      "timestamp": 1793355964.690237,
+      "event_type": "participant_joined",
+      "data": {
+        "account_id": "CUST_SENDER_EF39",
+        "display_name": "Sender",
+        "balance": 10000.0,
+        "device_id": "DEV_S",
+        "user_agent": "UA",
+        "raw_ip": "127.0.0.1",
+        "network_label": "Campus-WiFi",
+        "joined_at": 1793355964.690237,
+        "is_bot": false,
+        "role_card": {
+          "role_id": "VICTIM_1",
+          "title": "Unsuspecting Victim (Push Payment)",
+          "badge": "Victim",
+          "instructions": "You received an urgent SMS requesting payment. Send \u20b92,500 to Member A.",
+          "suggested_target": "MEMBER_A",
+          "suggested_amount": 2500.0
+        }
+      }
+    },
+    {
+      "seq": 2,
+      "timestamp": 1793355964.690798,
+      "event_type": "participant_joined",
+      "data": {
+        "account_id": "CUST_RECEIVER_A18F",
+        "display_name": "Receiver",
+        "balance": 10000.0,
+        "device_id": "DEV_R",
+        "user_agent": "UA",
+        "raw_ip": "127.0.0.1",
+        "network_label": "Campus-WiFi",
+        "joined_at": 1793355964.690237,
+        "is_bot": false,
+        "role_card": {
+          "role_id": "VICTIM_2",
+          "title": "Phishing Target",
+          "badge": "Victim",
+          "instructions": "Transfer \u20b93,000 to Member A for an alleged utility invoice refund.",
+          "suggested_target": "MEMBER_A",
+          "suggested_amount": 3000.0
+        }
+      }
+    },
+    {
+      "seq": 3,
+      "timestamp": 1793355964.7069225,
+      "event_type": "transfer_completed",
+      "data": {
+        "txn_id": "TXN_IDEM_D1E4_1793355964690",
+        "sender": "CUST_SENDER_EF39",
+        "receiver": "CUST_RECEIVER_A18F",
+        "amount": 1000.0,
+        "decision": {
+          "txn_id": "TXN_IDEM_D1E4_1793355964690",
+          "score": 0.0,
+          "tier": "ALLOW",
+          "summary": "Transaction appears normal; activity is consistent with account history.",
+          "action": "Authorize",
+          "reasons": [],
+          "latency_ms": 16.598,
+          "profile": "demo_sensitivity",
+          "timestamp": 1793355964.7069225
+        },
+        "response": {
+          "status": "PROCESSED",
+          "customer_message": "Payment sent successfully.",
+          "txn_id": "TXN_IDEM_D1E4_1793355964690",
+          "amount": 1000.0,
+          "sender_id": "CUST_SENDER_EF39",
+          "receiver_id": "CUST_RECEIVER_A18F",
+          "sender_balance": 9000.0,
+          "tier": "ALLOW",
+          "latency_ms": 16.598,
+          "profile": "demo_sensitivity"
+        }
+      }
+    }
+  ]
+}

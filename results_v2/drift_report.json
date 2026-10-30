@@ -1,0 +1,247 @@
+{
+  "is_simulation": false,
+  "simulation_label": "production traffic",
+  "sample_size": 104623,
+  "baseline_size": 8606,
+  "mean_feature_psi": 0.0323,
+  "score_drift": null,
+  "high_drift_count": 0,
+  "high_drift_features": [],
+  "overall_status": "healthy",
+  "features": {
+    "amount": {
+      "psi": 0.048,
+      "status": "stable",
+      "severity": "normal",
+      "drift_flag": false
+    },
+    "type_code": {
+      "psi": 0.1018,
+      "status": "moderate_drift",
+      "severity": "warning",
+      "drift_flag": false
+    },
+    "amount_to_balance": {
+      "psi": 0.1521,
+      "status": "moderate_drift",
+      "severity": "warning",
+      "drift_flag": false
+    },
+    "orig_drained": {
+      "psi": 0.0045,
+      "status": "stable",
+      "severity": "normal",
+      "drift_flag": false
+    },
+    "new_balance_to_old": {
+      "psi": 0.0294,
+      "status": "stable",
+      "severity": "normal",
+      "drift_flag": false
+    },
+    "balance_change_ratio": {
+      "psi": 0.1685,
+      "status": "moderate_drift",
+      "severity": "warning",
+      "drift_flag": false
+    },
+    "count_1h": {
+      "psi": 0.0,
+      "status": "stable",
+      "severity": "normal",
+      "drift_flag": false
+    },
+    "sum_1h": {
+      "psi": 0.0,
+      "status": "stable",
+      "severity": "normal",
+      "drift_flag": false
+    },
+    "distinct_payees_1h": {
+      "psi": 0.0,
+      "status": "stable",
+      "severity": "normal",
+      "drift_flag": false
+    },
+    "amount_vs_sum_1h": {
+      "psi": 0.0,
+      "status": "stable",
+      "severity": "normal",
+      "drift_flag": false
+    },
+    "count_6h": {
+      "psi": 0.0,
+      "status": "stable",
+      "severity": "normal",
+      "drift_flag": false
+    },
+    "sum_6h": {
+      "psi": 0.0,
+      "status": "stable",
+      "severity": "normal",
+      "drift_flag": false
+    },
+    "distinct_payees_6h": {
+      "psi": 0.0,
+      "status": "stable",
+      "severity": "normal",
+      "drift_flag": false
+    },
+    "amount_vs_sum_6h": {
+      "psi": 0.0,
+      "status": "stable",
+      "severity": "normal",
+      "drift_flag": false
+    },
+    "count_24h": {
+      "psi": 0.0,
+      "status": "stable",
+      "severity": "normal",
+      "drift_flag": false
+    },
+    "sum_24h": {
+      "psi": 0.0,
+      "status": "stable",
+      "severity": "normal",
+      "drift_flag": false
+    },
+    "distinct_payees_24h": {
+      "psi": 0.0,
+      "status": "stable",
+      "severity": "normal",
+      "drift_flag": false
+    },
+    "amount_vs_sum_24h": {
+      "psi": 0.0,
+      "status": "stable",
+      "severity": "normal",
+      "drift_flag": false
+    },
+    "amount_zscore": {
+      "psi": 0.0531,
+      "status": "stable",
+      "severity": "normal",
+      "drift_flag": false
+    },
+    "new_payee_flag": {
+      "psi": 0.088,
+      "status": "stable",
+      "severity": "normal",
+      "drift_flag": false
+    },
+    "payee_first_seen_age": {
+      "psi": 0.0,
+      "status": "stable",
+      "severity": "normal",
+      "drift_flag": false
+    },
+    "hour_deviation": {
+      "psi": 0.0441,
+      "status": "stable",
+      "severity": "normal",
+      "drift_flag": false
+    },
+    "time_since_last_txn": {
+      "psi": 0.0,
+      "status": "stable",
+      "severity": "normal",
+      "drift_flag": false
+    },
+    "dormancy_days": {
+      "psi": 0.0,
+      "status": "stable",
+      "severity": "normal",
+      "drift_flag": false
+    },
+    "device_count": {
+      "psi": 0.0,
+      "status": "stable",
+      "severity": "normal",
+      "drift_flag": false
+    },
+    "ip_prefix_count": {
+      "psi": 0.0,
+      "status": "stable",
+      "severity": "normal",
+      "drift_flag": false
+    },
+    "is_new_device": {
+      "psi": 0.1646,
+      "status": "moderate_drift",
+      "severity": "warning",
+      "drift_flag": false
+    },
+    "accounts_per_device": {
+      "psi": 0.0566,
+      "status": "stable",
+      "severity": "normal",
+      "drift_flag": false
+    },
+    "devices_per_account": {
+      "psi": 0.0,
+      "status": "stable",
+      "severity": "normal",
+      "drift_flag": false
+    },
+    "ip_prefix_sharing_count": {
+      "psi": 0.0566,
+      "status": "stable",
+      "severity": "normal",
+      "drift_flag": false
+    },
+    "device_first_seen_age": {
+      "psi": 0.0,
+      "status": "stable",
+      "severity": "normal",
+      "drift_flag": false
+    },
+    "payee_fan_in_1h": {
+      "psi": 0.0895,
+      "status": "stable",
+      "severity": "normal",
+      "drift_flag": false
+    },
+    "payee_fan_in_24h": {
+      "psi": 0.0895,
+      "status": "stable",
+      "severity": "normal",
+      "drift_flag": false
+    },
+    "payee_outflow_inflow_ratio_24h": {
+      "psi": 0.0,
+      "status": "stable",
+      "severity": "normal",
+      "drift_flag": false
+    },
+    "payee_pass_through_flag": {
+      "psi": 0.0,
+      "status": "stable",
+      "severity": "normal",
+      "drift_flag": false
+    },
+    "is_merchant": {
+      "psi": 0.0235,
+      "status": "stable",
+      "severity": "normal",
+      "drift_flag": false
+    },
+    "fraud_exposure_2hop": {
+      "psi": 0.0,
+      "status": "stable",
+      "severity": "normal",
+      "drift_flag": false
+    },
+    "degree": {
+      "psi": 0.0895,
+      "status": "stable",
+      "severity": "normal",
+      "drift_flag": false
+    },
+    "pagerank": {
+      "psi": 0.0,
+      "status": "stable",
+      "severity": "normal",
+      "drift_flag": false
+    }
+  }
+}

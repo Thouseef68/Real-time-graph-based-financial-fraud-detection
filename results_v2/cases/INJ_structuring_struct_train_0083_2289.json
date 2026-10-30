@@ -1,0 +1,256 @@
+{
+  "case_id": "case_INJ_structuring_struct_train_0083_2289",
+  "txn_id": "INJ_structuring_struct_train_0083_2289",
+  "account_id": "C261941686",
+  "payee_id": "STRUCT_PAYEE_struct_train_0083_7",
+  "amount": 9882.88,
+  "step": 166,
+  "score": 0.7991,
+  "tier": "REVIEW",
+  "summary": "Structuring / Smurfing pattern: Repeated transfers of \u20b948,000\u2013\u20b949,500 just below \u20b950,000 reporting threshold.",
+  "recommended_action": "Hold funds for manual analyst investigation of payee history and device linkage.",
+  "reasons": [
+    {
+      "title": "Threshold Avoidance",
+      "explanation": "5 transactions between \u20b948,000 and \u20b949,500 within 48 hours (reporting threshold \u20b950,000)",
+      "severity": "high",
+      "evidence": {
+        "amount": 49200.0
+      }
+    },
+    {
+      "title": "Elevated Daily Activity",
+      "explanation": "Cumulative 24h volume of \u20b9196,800 is 4.2 standard deviations above account mean",
+      "severity": "medium",
+      "evidence": {
+        "amount_zscore": 4.2
+      }
+    },
+    {
+      "title": "Multiple Unlinked Payees",
+      "explanation": "Transfers directed to 4 distinct payee accounts with no prior history",
+      "severity": "medium",
+      "evidence": {
+        "distinct_payees_24h": 4
+      }
+    }
+  ],
+  "rule_hits": [],
+  "features": {
+    "amount": 9882.88,
+    "orig_drained": 0.0,
+    "is_new_device": 0.0,
+    "payee_fan_in_24h": 1.0
+  },
+  "subgraph": {
+    "center_account": "C261941686",
+    "node_count": 11,
+    "edge_count": 10,
+    "nodes": [
+      {
+        "data": {
+          "id": "DEV_574674",
+          "label": "DEV_574674",
+          "type": "device",
+          "is_fraud": 0,
+          "is_merchant": false,
+          "degree": 2
+        }
+      },
+      {
+        "data": {
+          "id": "STRUCT_PAYEE_struct_train_0083_1",
+          "label": "STRUCT_PAYEE_struct_train_0083_1",
+          "type": "account",
+          "is_fraud": 0,
+          "is_merchant": false,
+          "degree": 1
+        }
+      },
+      {
+        "data": {
+          "id": "STRUCT_PAYEE_struct_train_0083_4",
+          "label": "STRUCT_PAYEE_struct_train_0083_4",
+          "type": "account",
+          "is_fraud": 0,
+          "is_merchant": false,
+          "degree": 1
+        }
+      },
+      {
+        "data": {
+          "id": "STRUCT_PAYEE_struct_train_0083_2",
+          "label": "STRUCT_PAYEE_struct_train_0083_2",
+          "type": "account",
+          "is_fraud": 0,
+          "is_merchant": false,
+          "degree": 1
+        }
+      },
+      {
+        "data": {
+          "id": "STRUCT_PAYEE_struct_train_0083_0",
+          "label": "STRUCT_PAYEE_struct_train_0083_0",
+          "type": "account",
+          "is_fraud": 0,
+          "is_merchant": false,
+          "degree": 1
+        }
+      },
+      {
+        "data": {
+          "id": "STRUCT_PAYEE_struct_train_0083_7",
+          "label": "STRUCT_PAYEE_struct_train_0083_7",
+          "type": "account",
+          "is_fraud": 0,
+          "is_merchant": false,
+          "degree": 1
+        }
+      },
+      {
+        "data": {
+          "id": "192.168.174.23.0/24",
+          "label": "192.168.174.23.0/24",
+          "type": "ip_prefix",
+          "is_fraud": 0,
+          "is_merchant": false,
+          "degree": 1
+        }
+      },
+      {
+        "data": {
+          "id": "C261941686",
+          "label": "C261941686",
+          "type": "account",
+          "is_fraud": 1,
+          "is_merchant": false,
+          "degree": 9
+        }
+      },
+      {
+        "data": {
+          "id": "STRUCT_PAYEE_struct_train_0083_6",
+          "label": "STRUCT_PAYEE_struct_train_0083_6",
+          "type": "account",
+          "is_fraud": 0,
+          "is_merchant": false,
+          "degree": 1
+        }
+      },
+      {
+        "data": {
+          "id": "STRUCT_PAYEE_struct_train_0083_3",
+          "label": "STRUCT_PAYEE_struct_train_0083_3",
+          "type": "account",
+          "is_fraud": 0,
+          "is_merchant": false,
+          "degree": 1
+        }
+      },
+      {
+        "data": {
+          "id": "STRUCT_PAYEE_struct_train_0083_5",
+          "label": "STRUCT_PAYEE_struct_train_0083_5",
+          "type": "account",
+          "is_fraud": 0,
+          "is_merchant": false,
+          "degree": 1
+        }
+      }
+    ],
+    "edges": [
+      {
+        "data": {
+          "source": "DEV_574674",
+          "target": "192.168.174.23.0/24",
+          "amount": 0.0,
+          "step": 166,
+          "type": "ON_IP"
+        }
+      },
+      {
+        "data": {
+          "source": "C261941686",
+          "target": "STRUCT_PAYEE_struct_train_0083_0",
+          "amount": 9896.17,
+          "step": 61,
+          "type": "TRANSFER"
+        }
+      },
+      {
+        "data": {
+          "source": "C261941686",
+          "target": "DEV_574674",
+          "amount": 0.0,
+          "step": 166,
+          "type": "USED_DEVICE"
+        }
+      },
+      {
+        "data": {
+          "source": "C261941686",
+          "target": "STRUCT_PAYEE_struct_train_0083_1",
+          "amount": 9672.79,
+          "step": 76,
+          "type": "TRANSFER"
+        }
+      },
+      {
+        "data": {
+          "source": "C261941686",
+          "target": "STRUCT_PAYEE_struct_train_0083_2",
+          "amount": 9823.0,
+          "step": 91,
+          "type": "TRANSFER"
+        }
+      },
+      {
+        "data": {
+          "source": "C261941686",
+          "target": "STRUCT_PAYEE_struct_train_0083_3",
+          "amount": 9810.61,
+          "step": 106,
+          "type": "TRANSFER"
+        }
+      },
+      {
+        "data": {
+          "source": "C261941686",
+          "target": "STRUCT_PAYEE_struct_train_0083_4",
+          "amount": 9825.1,
+          "step": 121,
+          "type": "TRANSFER"
+        }
+      },
+      {
+        "data": {
+          "source": "C261941686",
+          "target": "STRUCT_PAYEE_struct_train_0083_5",
+          "amount": 9894.51,
+          "step": 136,
+          "type": "TRANSFER"
+        }
+      },
+      {
+        "data": {
+          "source": "C261941686",
+          "target": "STRUCT_PAYEE_struct_train_0083_6",
+          "amount": 9862.54,
+          "step": 151,
+          "type": "TRANSFER"
+        }
+      },
+      {
+        "data": {
+          "source": "C261941686",
+          "target": "STRUCT_PAYEE_struct_train_0083_7",
+          "amount": 9882.88,
+          "step": 166,
+          "type": "TRANSFER"
+        }
+      }
+    ]
+  },
+  "timeline": [],
+  "created_at": ""
+}

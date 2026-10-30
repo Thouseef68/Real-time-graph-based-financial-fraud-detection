@@ -1,0 +1,17 @@
+{
+  "timestamp": 1793296188.6455393,
+  "challenger_version": "v2.1793296188.0",
+  "metrics": {
+    "pr_auc": 0.9998,
+    "roc_auc": 1.0,
+    "recall_at_1pct": 0.9781,
+    "training_samples": 144165,
+    "feedback_labels_applied": 0
+  },
+  "promotion_result": {
+    "promoted": true,
+    "delta": 0.1078,
+    "reason": "Promoted v2.1793296188.0 (PR-AUC 0.9998 vs champion 0.8920, delta +0.1078 >= 0.005)"
+  },
+  "active_champion": "v2.1793296188.0"
+}

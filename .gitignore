@@ -1,0 +1,58 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Testing & Cache
+.pytest_cache/
+.coverage
+htmlcov/
+data/cache/
+*.parquet
+*.db
+*.sqlite
+
+# Node / Frontend
+node_modules/
+.npm
+dist/
+
+# IDE / System
+.vscode/
+.DS_Store
+Thumbs.db
+.kilo/
+
+# Environment secrets & credentials
+.env
+*.env.local
+
+# Temporary binaries & logs
+tools/
+*.log
+tunnel.log
+scripts/tunnel.log
+cloudflared.log
+ngrok.log
+
+# Temporary live test sessions
+data/live_sessions/
+

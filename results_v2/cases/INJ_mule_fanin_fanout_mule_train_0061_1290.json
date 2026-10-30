@@ -1,0 +1,161 @@
+{
+  "case_id": "case_INJ_mule_fanin_fanout_mule_train_0061_1290",
+  "txn_id": "INJ_mule_fanin_fanout_mule_train_0061_1290",
+  "account_id": "C1715607509",
+  "payee_id": "C1083923336",
+  "amount": 210726.55,
+  "step": 62,
+  "score": 0.9655,
+  "tier": "BLOCK",
+  "summary": "Mule account pattern: Rapid aggregation from 22 distinct senders followed by immediate 85% pass-through.",
+  "recommended_action": "Block transaction immediately and lock account pending identity verification.",
+  "reasons": [
+    {
+      "title": "High Payee Fan-In",
+      "explanation": "Payee received funds from 22 distinct senders in the last 24 hours",
+      "severity": "high",
+      "evidence": {
+        "payee_fan_in_24h": 22
+      }
+    },
+    {
+      "title": "Pass-Through Account",
+      "explanation": "Account forwarded 88% of incoming funds within 4 hours",
+      "severity": "high",
+      "evidence": {
+        "payee_outflow_inflow_ratio_24h": 0.88
+      }
+    },
+    {
+      "title": "Rapid Depletion",
+      "explanation": "Aggregated funds transferred onwards to 2 collector accounts",
+      "severity": "medium",
+      "evidence": {
+        "payee_pass_through_flag": 1.0
+      }
+    }
+  ],
+  "rule_hits": [],
+  "features": {
+    "amount": 210726.55,
+    "orig_drained": 0.0,
+    "is_new_device": 0.0,
+    "payee_fan_in_24h": 22.0
+  },
+  "subgraph": {
+    "center_account": "C1715607509",
+    "node_count": 6,
+    "edge_count": 5,
+    "nodes": [
+      {
+        "data": {
+          "id": "C1540239986",
+          "label": "C1540239986",
+          "type": "account",
+          "is_fraud": 0,
+          "is_merchant": false,
+          "degree": 1
+        }
+      },
+      {
+        "data": {
+          "id": "C1715607509",
+          "label": "C1715607509",
+          "type": "account",
+          "is_fraud": 0,
+          "is_merchant": false,
+          "degree": 1
+        }
+      },
+      {
+        "data": {
+          "id": "C1867899214",
+          "label": "C1867899214",
+          "type": "account",
+          "is_fraud": 0,
+          "is_merchant": false,
+          "degree": 1
+        }
+      },
+      {
+        "data": {
+          "id": "C29152787",
+          "label": "C29152787",
+          "type": "account",
+          "is_fraud": 0,
+          "is_merchant": false,
+          "degree": 1
+        }
+      },
+      {
+        "data": {
+          "id": "C1249664967",
+          "label": "C1249664967",
+          "type": "account",
+          "is_fraud": 0,
+          "is_merchant": false,
+          "degree": 1
+        }
+      },
+      {
+        "data": {
+          "id": "C1083923336",
+          "label": "C1083923336",
+          "type": "account",
+          "is_fraud": 0,
+          "is_merchant": false,
+          "degree": 5
+        }
+      }
+    ],
+    "edges": [
+      {
+        "data": {
+          "source": "C1540239986",
+          "target": "C1083923336",
+          "amount": 75077.98,
+          "step": 62,
+          "type": "TRANSFER"
+        }
+      },
+      {
+        "data": {
+          "source": "C1715607509",
+          "target": "C1083923336",
+          "amount": 210726.55,
+          "step": 62,
+          "type": "TRANSFER"
+        }
+      },
+      {
+        "data": {
+          "source": "C1867899214",
+          "target": "C1083923336",
+          "amount": 9363.68,
+          "step": 60,
+          "type": "TRANSFER"
+        }
+      },
+      {
+        "data": {
+          "source": "C29152787",
+          "target": "C1083923336",
+          "amount": 221138.73,
+          "step": 60,
+          "type": "TRANSFER"
+        }
+      },
+      {
+        "data": {
+          "source": "C1249664967",
+          "target": "C1083923336",
+          "amount": 6503.21,
+          "step": 60,
+          "type": "TRANSFER"
+        }
+      }
+    ]
+  },
+  "timeline": [],
+  "created_at": ""
+}

@@ -1,0 +1,161 @@
+{
+  "case_id": "case_INJ_burst_takeover_burst_train_0008_154",
+  "txn_id": "INJ_burst_takeover_burst_train_0008_154",
+  "account_id": "C2100013285",
+  "payee_id": "C2005298894",
+  "amount": 198753.09,
+  "step": 153,
+  "score": 0.9455,
+  "tier": "BLOCK",
+  "summary": "Burst account takeover: Multiple rapid transfers to new mule payees within 2 hours.",
+  "recommended_action": "Block transaction immediately and lock account pending identity verification.",
+  "reasons": [
+    {
+      "title": "Velocity Spike (1h)",
+      "explanation": "Account executed 14 transactions within 90 minutes",
+      "severity": "high",
+      "evidence": {
+        "count_1h": 14
+      }
+    },
+    {
+      "title": "New Device Used",
+      "explanation": "Transaction originated from a mobile device never before linked to this account",
+      "severity": "high",
+      "evidence": {
+        "is_new_device": 1.0
+      }
+    },
+    {
+      "title": "Multiple New Payees",
+      "explanation": "Funds distributed to 3 new beneficiary accounts in quick succession",
+      "severity": "medium",
+      "evidence": {
+        "distinct_payees_1h": 3
+      }
+    }
+  ],
+  "rule_hits": [],
+  "features": {
+    "amount": 198753.09,
+    "orig_drained": 0.0,
+    "is_new_device": 1.0,
+    "payee_fan_in_24h": 1.0
+  },
+  "subgraph": {
+    "center_account": "C2100013285",
+    "node_count": 6,
+    "edge_count": 5,
+    "nodes": [
+      {
+        "data": {
+          "id": "192.168.135.140.0/24",
+          "label": "192.168.135.140.0/24",
+          "type": "ip_prefix",
+          "is_fraud": 0,
+          "is_merchant": false,
+          "degree": 1
+        }
+      },
+      {
+        "data": {
+          "id": "C748198455",
+          "label": "C748198455",
+          "type": "account",
+          "is_fraud": 0,
+          "is_merchant": false,
+          "degree": 1
+        }
+      },
+      {
+        "data": {
+          "id": "C2100013285",
+          "label": "C2100013285",
+          "type": "account",
+          "is_fraud": 1,
+          "is_merchant": false,
+          "degree": 4
+        }
+      },
+      {
+        "data": {
+          "id": "C2005298894",
+          "label": "C2005298894",
+          "type": "account",
+          "is_fraud": 0,
+          "is_merchant": false,
+          "degree": 1
+        }
+      },
+      {
+        "data": {
+          "id": "DEV_544500",
+          "label": "DEV_544500",
+          "type": "device",
+          "is_fraud": 0,
+          "is_merchant": false,
+          "degree": 2
+        }
+      },
+      {
+        "data": {
+          "id": "C1972618595",
+          "label": "C1972618595",
+          "type": "account",
+          "is_fraud": 0,
+          "is_merchant": false,
+          "degree": 1
+        }
+      }
+    ],
+    "edges": [
+      {
+        "data": {
+          "source": "C2100013285",
+          "target": "C2005298894",
+          "amount": 198753.09,
+          "step": 153,
+          "type": "TRANSFER"
+        }
+      },
+      {
+        "data": {
+          "source": "C2100013285",
+          "target": "DEV_544500",
+          "amount": 0.0,
+          "step": 153,
+          "type": "USED_DEVICE"
+        }
+      },
+      {
+        "data": {
+          "source": "C2100013285",
+          "target": "C748198455",
+          "amount": 130893.7,
+          "step": 153,
+          "type": "TRANSFER"
+        }
+      },
+      {
+        "data": {
+          "source": "C2100013285",
+          "target": "C1972618595",
+          "amount": 233827.16,
+          "step": 153,
+          "type": "TRANSFER"
+        }
+      },
+      {
+        "data": {
+          "source": "DEV_544500",
+          "target": "192.168.135.140.0/24",
+          "amount": 0.0,
+          "step": 153,
+          "type": "ON_IP"
+        }
+      }
+    ]
+  },
+  "timeline": [],
+  "created_at": ""
+}

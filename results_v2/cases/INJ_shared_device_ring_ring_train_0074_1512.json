@@ -1,0 +1,317 @@
+{
+  "case_id": "case_INJ_shared_device_ring_ring_train_0074_1512",
+  "txn_id": "INJ_shared_device_ring_ring_train_0074_1512",
+  "account_id": "C2114227097",
+  "payee_id": "C46720604",
+  "amount": 400.86,
+  "step": 79,
+  "score": 0.9331,
+  "tier": "BLOCK",
+  "summary": "Synthetic identity / device ring: 8 distinct accounts operating from a single hardware device.",
+  "recommended_action": "Block transaction immediately and lock account pending identity verification.",
+  "reasons": [
+    {
+      "title": "Shared Hardware Fingerprint",
+      "explanation": "Device ID dev_ring_08 is simultaneously associated with 8 active customer accounts",
+      "severity": "critical",
+      "evidence": {
+        "accounts_per_device": 8.0
+      }
+    },
+    {
+      "title": "Circular Fund Layering",
+      "explanation": "Repeated back-and-forth transfers detected between co-located accounts",
+      "severity": "high",
+      "evidence": {
+        "fraud_exposure_2hop": 4.0
+      }
+    },
+    {
+      "title": "Subnet Colocation",
+      "explanation": "All 8 accounts share IP subnet 10.42.100.0/24",
+      "severity": "medium",
+      "evidence": {
+        "ip_prefix_sharing_count": 8.0
+      }
+    }
+  ],
+  "rule_hits": [],
+  "features": {
+    "amount": 400.86,
+    "orig_drained": 0.0,
+    "is_new_device": 1.0,
+    "payee_fan_in_24h": 1.0
+  },
+  "subgraph": {
+    "center_account": "C2114227097",
+    "node_count": 9,
+    "edge_count": 19,
+    "nodes": [
+      {
+        "data": {
+          "id": "C1261423683",
+          "label": "C1261423683",
+          "type": "account",
+          "is_fraud": 1,
+          "is_merchant": false,
+          "degree": 4
+        }
+      },
+      {
+        "data": {
+          "id": "DEV_RING_ring_train_0074",
+          "label": "DEV_RING_ring_train_0074",
+          "type": "device",
+          "is_fraud": 0,
+          "is_merchant": false,
+          "degree": 7
+        }
+      },
+      {
+        "data": {
+          "id": "172.20.225.0/24",
+          "label": "172.20.225.0/24",
+          "type": "ip_prefix",
+          "is_fraud": 0,
+          "is_merchant": false,
+          "degree": 1
+        }
+      },
+      {
+        "data": {
+          "id": "C46720604",
+          "label": "C46720604",
+          "type": "account",
+          "is_fraud": 1,
+          "is_merchant": false,
+          "degree": 4
+        }
+      },
+      {
+        "data": {
+          "id": "C18231394",
+          "label": "C18231394",
+          "type": "account",
+          "is_fraud": 1,
+          "is_merchant": false,
+          "degree": 4
+        }
+      },
+      {
+        "data": {
+          "id": "C1810162118",
+          "label": "C1810162118",
+          "type": "account",
+          "is_fraud": 1,
+          "is_merchant": false,
+          "degree": 4
+        }
+      },
+      {
+        "data": {
+          "id": "C2114227097",
+          "label": "C2114227097",
+          "type": "account",
+          "is_fraud": 1,
+          "is_merchant": false,
+          "degree": 4
+        }
+      },
+      {
+        "data": {
+          "id": "COMMON_PAY_ring_train_0074",
+          "label": "COMMON_PAY_ring_train_0074",
+          "type": "account",
+          "is_fraud": 0,
+          "is_merchant": false,
+          "degree": 6
+        }
+      },
+      {
+        "data": {
+          "id": "C410801542",
+          "label": "C410801542",
+          "type": "account",
+          "is_fraud": 1,
+          "is_merchant": false,
+          "degree": 4
+        }
+      }
+    ],
+    "edges": [
+      {
+        "data": {
+          "source": "C1261423683",
+          "target": "COMMON_PAY_ring_train_0074",
+          "amount": 897.4,
+          "step": 76,
+          "type": "TRANSFER"
+        }
+      },
+      {
+        "data": {
+          "source": "C1261423683",
+          "target": "DEV_RING_ring_train_0074",
+          "amount": 0.0,
+          "step": 76,
+          "type": "USED_DEVICE"
+        }
+      },
+      {
+        "data": {
+          "source": "C1261423683",
+          "target": "C410801542",
+          "amount": 2243.5,
+          "step": 76,
+          "type": "TRANSFER"
+        }
+      },
+      {
+        "data": {
+          "source": "DEV_RING_ring_train_0074",
+          "target": "172.20.225.0/24",
+          "amount": 0.0,
+          "step": 79,
+          "type": "ON_IP"
+        }
+      },
+      {
+        "data": {
+          "source": "C46720604",
+          "target": "COMMON_PAY_ring_train_0074",
+          "amount": 649.93,
+          "step": 74,
+          "type": "TRANSFER"
+        }
+      },
+      {
+        "data": {
+          "source": "C46720604",
+          "target": "DEV_RING_ring_train_0074",
+          "amount": 0.0,
+          "step": 74,
+          "type": "USED_DEVICE"
+        }
+      },
+      {
+        "data": {
+          "source": "C46720604",
+          "target": "C18231394",
+          "amount": 1624.82,
+          "step": 74,
+          "type": "TRANSFER"
+        }
+      },
+      {
+        "data": {
+          "source": "C18231394",
+          "target": "C1261423683",
+          "amount": 2464.5,
+          "step": 75,
+          "type": "TRANSFER"
+        }
+      },
+      {
+        "data": {
+          "source": "C18231394",
+          "target": "DEV_RING_ring_train_0074",
+          "amount": 0.0,
+          "step": 75,
+          "type": "USED_DEVICE"
+        }
+      },
+      {
+        "data": {
+          "source": "C18231394",
+          "target": "COMMON_PAY_ring_train_0074",
+          "amount": 985.8,
+          "step": 75,
+          "type": "TRANSFER"
+        }
+      },
+      {
+        "data": {
+          "source": "C1810162118",
+          "target": "COMMON_PAY_ring_train_0074",
+          "amount": 999.88,
+          "step": 78,
+          "type": "TRANSFER"
+        }
+      },
+      {
+        "data": {
+          "source": "C1810162118",
+          "target": "DEV_RING_ring_train_0074",
+          "amount": 0.0,
+          "step": 78,
+          "type": "USED_DEVICE"
+        }
+      },
+      {
+        "data": {
+          "source": "C1810162118",
+          "target": "C2114227097",
+          "amount": 2499.7,
+          "step": 78,
+          "type": "TRANSFER"
+        }
+      },
+      {
+        "data": {
+          "source": "C2114227097",
+          "target": "C46720604",
+          "amount": 400.86,
+          "step": 79,
+          "type": "TRANSFER"
+        }
+      },
+      {
+        "data": {
+          "source": "C2114227097",
+          "target": "DEV_RING_ring_train_0074",
+          "amount": 0.0,
+          "step": 79,
+          "type": "USED_DEVICE"
+        }
+      },
+      {
+        "data": {
+          "source": "C2114227097",
+          "target": "COMMON_PAY_ring_train_0074",
+          "amount": 700.61,
+          "step": 73,
+          "type": "TRANSFER"
+        }
+      },
+      {
+        "data": {
+          "source": "C410801542",
+          "target": "COMMON_PAY_ring_train_0074",
+          "amount": 752.65,
+          "step": 77,
+          "type": "TRANSFER"
+        }
+      },
+      {
+        "data": {
+          "source": "C410801542",
+          "target": "DEV_RING_ring_train_0074",
+          "amount": 0.0,
+          "step": 77,
+          "type": "USED_DEVICE"
+        }
+      },
+      {
+        "data": {
+          "source": "C410801542",
+          "target": "C1810162118",
+          "amount": 1881.62,
+          "step": 77,
+          "type": "TRANSFER"
+        }
+      }
+    ]
+  },
+  "timeline": [],
+  "created_at": ""
+}

@@ -1,0 +1,22 @@
+{
+  "features": [
+    "amount",
+    "type_code",
+    "amount_to_balance",
+    "orig_drained",
+    "amount_vs_sum_24h",
+    "count_24h",
+    "sum_24h",
+    "distinct_payees_24h"
+  ],
+  "type_codes": {
+    "CASH_IN": 0,
+    "CASH_OUT": 1,
+    "DEBIT": 2,
+    "PAYMENT": 3,
+    "TRANSFER": 4
+  },
+  "window_hours": 24,
+  "review_threshold": 0.44460076093673706,
+  "block_threshold": 0.6450737714767456
+}

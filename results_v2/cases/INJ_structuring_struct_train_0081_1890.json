@@ -1,0 +1,199 @@
+{
+  "case_id": "case_INJ_structuring_struct_train_0081_1890",
+  "txn_id": "INJ_structuring_struct_train_0081_1890",
+  "account_id": "C860890650",
+  "payee_id": "STRUCT_PAYEE_struct_train_0081_4",
+  "amount": 9540.25,
+  "step": 115,
+  "score": 0.7994,
+  "tier": "REVIEW",
+  "summary": "Structuring / Smurfing pattern: Repeated transfers of \u20b948,000\u2013\u20b949,500 just below \u20b950,000 reporting threshold.",
+  "recommended_action": "Hold funds for manual analyst investigation of payee history and device linkage.",
+  "reasons": [
+    {
+      "title": "Threshold Avoidance",
+      "explanation": "5 transactions between \u20b948,000 and \u20b949,500 within 48 hours (reporting threshold \u20b950,000)",
+      "severity": "high",
+      "evidence": {
+        "amount": 49200.0
+      }
+    },
+    {
+      "title": "Elevated Daily Activity",
+      "explanation": "Cumulative 24h volume of \u20b9196,800 is 4.2 standard deviations above account mean",
+      "severity": "medium",
+      "evidence": {
+        "amount_zscore": 4.2
+      }
+    },
+    {
+      "title": "Multiple Unlinked Payees",
+      "explanation": "Transfers directed to 4 distinct payee accounts with no prior history",
+      "severity": "medium",
+      "evidence": {
+        "distinct_payees_24h": 4
+      }
+    }
+  ],
+  "rule_hits": [],
+  "features": {
+    "amount": 9540.25,
+    "orig_drained": 0.0,
+    "is_new_device": 0.0,
+    "payee_fan_in_24h": 1.0
+  },
+  "subgraph": {
+    "center_account": "C860890650",
+    "node_count": 8,
+    "edge_count": 7,
+    "nodes": [
+      {
+        "data": {
+          "id": "DEV_091710",
+          "label": "DEV_091710",
+          "type": "device",
+          "is_fraud": 0,
+          "is_merchant": false,
+          "degree": 2
+        }
+      },
+      {
+        "data": {
+          "id": "192.168.236.60.0/24",
+          "label": "192.168.236.60.0/24",
+          "type": "ip_prefix",
+          "is_fraud": 0,
+          "is_merchant": false,
+          "degree": 1
+        }
+      },
+      {
+        "data": {
+          "id": "STRUCT_PAYEE_struct_train_0081_4",
+          "label": "STRUCT_PAYEE_struct_train_0081_4",
+          "type": "account",
+          "is_fraud": 0,
+          "is_merchant": false,
+          "degree": 1
+        }
+      },
+      {
+        "data": {
+          "id": "STRUCT_PAYEE_struct_train_0081_2",
+          "label": "STRUCT_PAYEE_struct_train_0081_2",
+          "type": "account",
+          "is_fraud": 0,
+          "is_merchant": false,
+          "degree": 1
+        }
+      },
+      {
+        "data": {
+          "id": "C860890650",
+          "label": "C860890650",
+          "type": "account",
+          "is_fraud": 1,
+          "is_merchant": false,
+          "degree": 6
+        }
+      },
+      {
+        "data": {
+          "id": "STRUCT_PAYEE_struct_train_0081_3",
+          "label": "STRUCT_PAYEE_struct_train_0081_3",
+          "type": "account",
+          "is_fraud": 0,
+          "is_merchant": false,
+          "degree": 1
+        }
+      },
+      {
+        "data": {
+          "id": "STRUCT_PAYEE_struct_train_0081_1",
+          "label": "STRUCT_PAYEE_struct_train_0081_1",
+          "type": "account",
+          "is_fraud": 0,
+          "is_merchant": false,
+          "degree": 1
+        }
+      },
+      {
+        "data": {
+          "id": "STRUCT_PAYEE_struct_train_0081_0",
+          "label": "STRUCT_PAYEE_struct_train_0081_0",
+          "type": "account",
+          "is_fraud": 0,
+          "is_merchant": false,
+          "degree": 1
+        }
+      }
+    ],
+    "edges": [
+      {
+        "data": {
+          "source": "DEV_091710",
+          "target": "192.168.236.60.0/24",
+          "amount": 0.0,
+          "step": 115,
+          "type": "ON_IP"
+        }
+      },
+      {
+        "data": {
+          "source": "C860890650",
+          "target": "STRUCT_PAYEE_struct_train_0081_0",
+          "amount": 9840.29,
+          "step": 55,
+          "type": "TRANSFER"
+        }
+      },
+      {
+        "data": {
+          "source": "C860890650",
+          "target": "DEV_091710",
+          "amount": 0.0,
+          "step": 115,
+          "type": "USED_DEVICE"
+        }
+      },
+      {
+        "data": {
+          "source": "C860890650",
+          "target": "STRUCT_PAYEE_struct_train_0081_1",
+          "amount": 9878.06,
+          "step": 70,
+          "type": "TRANSFER"
+        }
+      },
+      {
+        "data": {
+          "source": "C860890650",
+          "target": "STRUCT_PAYEE_struct_train_0081_2",
+          "amount": 9861.89,
+          "step": 85,
+          "type": "TRANSFER"
+        }
+      },
+      {
+        "data": {
+          "source": "C860890650",
+          "target": "STRUCT_PAYEE_struct_train_0081_3",
+          "amount": 9728.15,
+          "step": 100,
+          "type": "TRANSFER"
+        }
+      },
+      {
+        "data": {
+          "source": "C860890650",
+          "target": "STRUCT_PAYEE_struct_train_0081_4",
+          "amount": 9540.25,
+          "step": 115,
+          "type": "TRANSFER"
+        }
+      }
+    ]
+  },
+  "timeline": [],
+  "created_at": ""
+}

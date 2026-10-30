@@ -1,0 +1,13 @@
+{
+  "timestamp": "2026-10-30T09:46:19Z",
+  "run_id": "0945cec6",
+  "run_scoped_topic": "transactions_run_0945cec6",
+  "consumer_group": "evaluator_group_0945cec6",
+  "redis_key_prefix": "fraud:v2:stream_parity:0945cec6:",
+  "transport": "Isolated In-Process Streaming Queue",
+  "events_replayed": 2000,
+  "max_score_difference": 1.0,
+  "mean_score_difference": 0.10873,
+  "decision_agreement_pct": 34.5,
+  "status": "WARN"
+}

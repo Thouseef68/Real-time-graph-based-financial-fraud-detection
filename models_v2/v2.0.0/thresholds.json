@@ -1,0 +1,9 @@
+{
+  "alert_budget_1pct": 1.0,
+  "alert_budget_0_5pct": 1.0,
+  "cost_optimal": 0.059494949494949496,
+  "tier_allow_max": 0.4,
+  "tier_step_up_max": 0.8,
+  "tier_review_max": 1.5,
+  "tier_block_min": 1.5
+}

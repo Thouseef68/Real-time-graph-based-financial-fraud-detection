@@ -1,0 +1,35 @@
+{
+  "updated_at": 1793296188.6425512,
+  "active_champion": "v2.1793296188.0",
+  "versions": {
+    "v2.0.0": {
+      "version": "v2.0.0",
+      "stage": "archived",
+      "model_path": "C:\\Users\\thous\\OneDrive\\Desktop\\DSU_PROJECT\\models_v2\\v2.0.0",
+      "metrics": {
+        "pr_auc": 0.892,
+        "recall_at_1pct": 0.954
+      },
+      "created_at": 1793296116.5469177,
+      "promoted_at": 1793296116.5469177,
+      "config_hash": null,
+      "notes": "Baseline v2 champion model"
+    },
+    "v2.1793296188.0": {
+      "version": "v2.1793296188.0",
+      "stage": "champion",
+      "model_path": "C:\\Users\\thous\\OneDrive\\Desktop\\DSU_PROJECT\\models_v2\\v2.1793296188.0",
+      "metrics": {
+        "pr_auc": 0.9998,
+        "roc_auc": 1.0,
+        "recall_at_1pct": 0.9781,
+        "training_samples": 144165,
+        "feedback_labels_applied": 0
+      },
+      "created_at": 1793296188.6395905,
+      "promoted_at": 1793296188.6425512,
+      "config_hash": null,
+      "notes": "Automated retrain run on 0 feedback labels"
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "timestamp": "2026-10-30T07:32:23Z",
+  "total_stream_pool_size": 50000,
+  "warmup_events": 500,
+  "measured_events": 5000,
+  "backends": {
+    "in_memory": {
+      "measured_count": 5000,
+      "total_wall_sec": 86.74,
+      "throughput_txns_per_sec": 57.6,
+      "latency_ms": {
+        "p50": 15.807,
+        "p95": 25.679,
+        "p99": 37.778,
+        "mean": 17.343,
+        "min": 12.039,
+        "max": 249.206
+      },
+      "tier_distribution": {
+        "ALLOW": 4408,
+        "STEP_UP": 472,
+        "REVIEW": 120,
+        "BLOCK": 0
+      },
+      "shap_runs_count": 592,
+      "shap_policy": "Strictly non-ALLOW transactions only (protects p50 hot path)"
+    }
+  }
+}

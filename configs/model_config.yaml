@@ -1,0 +1,179 @@
+# configs/model_config.yaml
+model:
+  name: "xgboost_v2"
+  version: "2.0.0"
+  seed: 42
+  params:
+    n_estimators: 500
+    max_depth: 6
+    learning_rate: 0.05
+    subsample: 0.8
+    colsample_bytree: 0.8
+    scale_pos_weight: "auto"
+    eval_metric: "aucpr"
+    tree_method: "hist"
+    early_stopping_rounds: 30
+  calibration:
+    method: "isotonic"
+  thresholds:
+    alert_budget: 0.01  # 1% alert budget
+    cost_fp: 1.0
+    cost_fn: 10.0
+
+# configs/scenarios.yaml
+scenarios:
+  burst_takeover:
+    enabled: true
+    count: 50
+    victims_per_mule: 10
+    txns_per_victim: 5
+    burst_window_hours: 6
+    start_step: 610
+    amount_range: [10, 100]
+    description: "Compromised account, new device, small/medium transfers to 1-3 mule payees within 1-3h. Account NOT drained to zero."
+  mule_fanin_fanout:
+    enabled: true
+    count: 20
+    victims_per_mule: 20
+    txns_per_victim: 1
+    burst_window_hours: 24
+    start_step: 620
+    forward_ratio: 0.8
+    description: "10-40 victims pay one mule within 24h; mule forwards >=80% to 1-3 collectors within 6h."
+  shared_device_ring:
+    enabled: true
+    count: 10
+    accounts_per_ring: 10
+    txns_per_account: 3
+    burst_window_hours: 12
+    start_step: 630
+    description: "5-15 accounts on one device/ip doing circular transfers and layering through common payees."
+  structuring:
+    enabled: true
+    count: 15
+    txns_per_account: 8
+    days: 5
+    amount_threshold: 10000
+    buffer: 500
+    description: "Repeated just-below-threshold amounts over several days to varied payees."
+  dormant_reactivation:
+    enabled: true
+    count: 20
+    dormancy_days: 30
+    start_step: 640
+    description: "Long-inactive account suddenly sends large amount to new payee from new device."
+
+# configs/scenarios_negatives.yaml
+hard_negatives:
+  payroll:
+    enabled: true
+    count: 20
+    employees_per_employer: 50
+    frequency: "monthly"
+    description: "One employer to many employees, regular amounts."
+  merchant_high_fanin:
+    enabled: true
+    count: 15
+    customers_per_merchant: 100
+    description: "Merchant-like customer accounts with high fan-in."
+  household_shared_device:
+    enabled: true
+    count: 25
+    accounts_per_device: 3
+    description: "Household shared devices with legitimate traffic."
+  large_legitimate_drain:
+    enabled: true
+    count: 20
+    description: "Large legitimate transfers that drain a balance."
+  bill_payment_burst:
+    enabled: true
+    count: 20
+    day_of_month: 1
+    description: "Legitimate month-start bill-payment bursts."
+
+# configs/feature_config.yaml
+features:
+  window_hours: 24
+  velocity_windows: [1, 6, 24]
+  velocity_features:
+    - "count"
+    - "sum"
+    - "distinct_payees"
+    - "amount_vs_sum"
+  behavioural_features:
+    - "amount_zscore"
+    - "new_payee_flag"
+    - "payee_first_seen"
+    - "hour_of_day_deviation"
+    - "time_since_last_txn"
+    - "dormancy"
+  device_network_features:
+    - "is_new_device"
+    - "accounts_per_device"
+    - "devices_per_account"
+    - "ip_prefix_sharing"
+  graph_features:
+    - "payee_fan_in_1h"
+    - "payee_fan_in_24h"
+    - "payee_outflow_inflow_ratio_24h"
+    - "payee_pass_through_flag"
+    - "payee_first_seen_age"
+    - "is_merchant"
+    - "fraud_exposure_2hop"
+    - "degree"
+    - "pagerank"
+  anomaly_features:
+    - "isolation_forest_score"
+    - "autoencoder_reconstruction_error"
+
+# configs/redis_config.yaml
+redis:
+  host: "localhost"
+  port: 6379
+  decode_responses: true
+  key_prefix: "fraud:v2:"
+  ttl_hours: 25
+  pipeline_batch_size: 1000
+
+# configs/kafka_config.yaml
+kafka:
+  bootstrap_servers: "localhost:9092"
+  topics:
+    transactions: "transactions_v2"
+    decisions: "decisions_v2"
+    replay: "replay_v2"
+  consumer_group_prefix: "scorer_v2"
+  producer_linger_ms: 5
+  auto_offset_reset: "earliest"
+  enable_auto_commit: false
+
+# configs/neo4j_config.yaml
+neo4j:
+  uri: "bolt://localhost:7687"
+  username: "neo4j"
+  password: "password"
+  batch_size: 1000
+  constraints:
+    - "CREATE CONSTRAINT IF NOT EXISTS FOR (a:Account) REQUIRE a.account_id IS UNIQUE"
+    - "CREATE CONSTRAINT IF NOT EXISTS FOR (d:Device) REQUIRE d.device_id IS UNIQUE"
+    - "CREATE CONSTRAINT IF NOT EXISTS FOR (p:IPPrefix) REQUIRE p.prefix IS UNIQUE"
+  indexes:
+    - "CREATE INDEX IF NOT EXISTS FOR (a:Account) ON (a.last_seen_step)"
+    - "CREATE INDEX IF NOT EXISTS FOR (p:Payee) ON (p.first_seen_step)"
+
+# configs/eval_config.yaml
+evaluation:
+  metrics:
+    - "pr_auc"
+    - "roc_auc"
+    - "recall_at_alert_budget_1pct"
+    - "recall_at_alert_budget_0_5pct"
+    - "precision_at_recall_0_8"
+    - "precision_at_recall_0_9"
+    - "cost_weighted_loss"
+  bootstrap_ci:
+    n_resamples: 1000
+    confidence: 0.95
+    group_by: "group_id"
+  time_slices: 3
+  hard_negative_fpr: true

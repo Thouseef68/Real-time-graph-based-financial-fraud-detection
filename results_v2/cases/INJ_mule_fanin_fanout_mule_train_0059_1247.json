@@ -1,0 +1,85 @@
+{
+  "case_id": "case_INJ_mule_fanin_fanout_mule_train_0059_1247",
+  "txn_id": "INJ_mule_fanin_fanout_mule_train_0059_1247",
+  "account_id": "C1221435959",
+  "payee_id": "C1259352750",
+  "amount": 401565.4,
+  "step": 77,
+  "score": 0.9893,
+  "tier": "BLOCK",
+  "summary": "Mule account pattern: Rapid aggregation from 22 distinct senders followed by immediate 85% pass-through.",
+  "recommended_action": "Block transaction immediately and lock account pending identity verification.",
+  "reasons": [
+    {
+      "title": "High Payee Fan-In",
+      "explanation": "Payee received funds from 22 distinct senders in the last 24 hours",
+      "severity": "high",
+      "evidence": {
+        "payee_fan_in_24h": 22
+      }
+    },
+    {
+      "title": "Pass-Through Account",
+      "explanation": "Account forwarded 88% of incoming funds within 4 hours",
+      "severity": "high",
+      "evidence": {
+        "payee_outflow_inflow_ratio_24h": 0.88
+      }
+    },
+    {
+      "title": "Rapid Depletion",
+      "explanation": "Aggregated funds transferred onwards to 2 collector accounts",
+      "severity": "medium",
+      "evidence": {
+        "payee_pass_through_flag": 1.0
+      }
+    }
+  ],
+  "rule_hits": [],
+  "features": {
+    "amount": 401565.4,
+    "orig_drained": 0.0,
+    "is_new_device": 0.0,
+    "payee_fan_in_24h": 22.0
+  },
+  "subgraph": {
+    "center_account": "C1221435959",
+    "node_count": 2,
+    "edge_count": 1,
+    "nodes": [
+      {
+        "data": {
+          "id": "C1221435959",
+          "label": "C1221435959",
+          "type": "account",
+          "is_fraud": 0,
+          "is_merchant": false,
+          "degree": 1
+        }
+      },
+      {
+        "data": {
+          "id": "C1259352750",
+          "label": "C1259352750",
+          "type": "account",
+          "is_fraud": 0,
+          "is_merchant": false,
+          "degree": 1
+        }
+      }
+    ],
+    "edges": [
+      {
+        "data": {
+          "source": "C1221435959",
+          "target": "C1259352750",
+          "amount": 401565.4,
+          "step": 77,
+          "type": "TRANSFER"
+        }
+      }
+    ]
+  },
+  "timeline": [],
+  "created_at": ""
+}

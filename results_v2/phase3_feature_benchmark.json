@@ -1,0 +1,66 @@
+{
+  "timestamp": "2026-10-28T20:31:51Z",
+  "measured_transactions": 5000,
+  "results": {
+    "base": {
+      "p50_us": 1.6,
+      "p95_us": 2.0,
+      "p99_us": 2.2,
+      "mean_us": 1.65,
+      "p50_ms": 0.0016,
+      "p95_ms": 0.002,
+      "p99_ms": 0.0022,
+      "throughput_txns_per_sec": 604924.0
+    },
+    "velocity": {
+      "p50_us": 12.5,
+      "p95_us": 19.4,
+      "p99_us": 23.7,
+      "mean_us": 13.58,
+      "p50_ms": 0.0125,
+      "p95_ms": 0.0194,
+      "p99_ms": 0.0237,
+      "throughput_txns_per_sec": 73635.0
+    },
+    "behavioural": {
+      "p50_us": 3.8,
+      "p95_us": 5.9,
+      "p99_us": 7.6,
+      "mean_us": 4.15,
+      "p50_ms": 0.0038,
+      "p95_ms": 0.0059,
+      "p99_ms": 0.0076,
+      "throughput_txns_per_sec": 241018.4
+    },
+    "device_network": {
+      "p50_us": 2.2,
+      "p95_us": 3.0,
+      "p99_us": 5.9,
+      "mean_us": 2.35,
+      "p50_ms": 0.0022,
+      "p95_ms": 0.003,
+      "p99_ms": 0.0059,
+      "throughput_txns_per_sec": 424938.8
+    },
+    "graph": {
+      "p50_us": 6.5,
+      "p95_us": 8.61,
+      "p99_us": 14.8,
+      "mean_us": 210.09,
+      "p50_ms": 0.0065,
+      "p95_ms": 0.0086,
+      "p99_ms": 0.0148,
+      "throughput_txns_per_sec": 4759.9
+    },
+    "all_combined": {
+      "p50_us": 33.9,
+      "p95_us": 57.0,
+      "p99_us": 104.41,
+      "mean_us": 39.29,
+      "p50_ms": 0.0339,
+      "p95_ms": 0.057,
+      "p99_ms": 0.1044,
+      "throughput_txns_per_sec": 25450.0
+    }
+  }
+}

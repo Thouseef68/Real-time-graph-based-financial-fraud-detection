@@ -1,0 +1,67 @@
+{
+  "session_id": "session_WIPE_96C2_1793355964",
+  "room_code": "WIPE_96C2",
+  "created_at": 1793355964.8074195,
+  "updated_at": 1793355964.8261936,
+  "total_events": 2,
+  "events": [
+    {
+      "seq": 1,
+      "timestamp": 1793355964.8086336,
+      "event_type": "participant_joined",
+      "data": {
+        "account_id": "CUST_TEMPUSER_2967",
+        "display_name": "Temp User",
+        "balance": 10000.0,
+        "device_id": "DEV_TEMP",
+        "user_agent": "UA",
+        "raw_ip": "127.0.0.1",
+        "network_label": "Campus-WiFi",
+        "joined_at": 1793355964.8086336,
+        "is_bot": false,
+        "role_card": {
+          "role_id": "VICTIM_1",
+          "title": "Unsuspecting Victim (Push Payment)",
+          "badge": "Victim",
+          "instructions": "You received an urgent SMS requesting payment. Send \u20b92,500 to Member A.",
+          "suggested_target": "MEMBER_A",
+          "suggested_amount": 2500.0
+        }
+      }
+    },
+    {
+      "seq": 2,
+      "timestamp": 1793355964.8261936,
+      "event_type": "transfer_completed",
+      "data": {
+        "txn_id": "TXN_WIPE_96C2_1793355964808",
+        "sender": "CUST_TEMPUSER_2967",
+        "receiver": "BOT_MERCHANT_CAMPUS_MART",
+        "amount": 500.0,
+        "decision": {
+          "txn_id": "TXN_WIPE_96C2_1793355964808",
+          "score": 0.0,
+          "tier": "ALLOW",
+          "summary": "Transaction appears normal; activity is consistent with account history.",
+          "action": "Authorize",
+          "reasons": [],
+          "latency_ms": 17.262,
+          "profile": "demo_sensitivity",
+          "timestamp": 1793355964.8261936
+        },
+        "response": {
+          "status": "PROCESSED",
+          "customer_message": "Payment sent successfully.",
+          "txn_id": "TXN_WIPE_96C2_1793355964808",
+          "amount": 500.0,
+          "sender_id": "CUST_TEMPUSER_2967",
+          "receiver_id": "BOT_MERCHANT_CAMPUS_MART",
+          "sender_balance": 9500.0,
+          "tier": "ALLOW",
+          "latency_ms": 17.262,
+          "profile": "demo_sensitivity"
+        }
+      }
+    }
+  ]
+}

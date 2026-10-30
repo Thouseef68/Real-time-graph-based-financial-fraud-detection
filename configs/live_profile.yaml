@@ -1,0 +1,53 @@
+# Live Sandbox Bank: Demo Sensitivity Profile
+# Tuned for small classroom/audience participation (3 to 6 participants)
+# In contrast to production profiles (which train on enterprise volumes with 10-40 mules),
+# this profile detects mule aggregation and rapid pass-through within realistic presentation timeframes.
+
+profile_name: "demo_sensitivity"
+description: "Live classroom presentation profile with rapid time-compression and small-cohort fan-in sensitivity."
+version: "1.0.0"
+
+# Time Compression Settings
+time_compression:
+  enabled: true
+  # Default: 1 real minute = 1 simulated hour (60x time acceleration)
+  # Allows rolling 1h, 6h, and 24h feature windows to populate within a 5-minute live demo.
+  scale_factor: 60.0
+  base_sim_step: 700
+
+# Cohort & Threshold Overrides for Small Groups
+thresholds:
+  # In production, mule accumulation requires >= 8-12 distinct senders in 24h.
+  # For 3-5 classroom volunteers, threshold is set to >= 3 distinct senders.
+  min_fan_in_senders: 3
+  fan_in_window_minutes_real: 5.0  # 5 real minutes (= 5 simulated hours)
+
+  # Pass-through ratio: percentage of total inflow forwarded onward within the window.
+  # In production: >= 85%. For demo: >= 70% to tolerate micro-balance differences.
+  min_pass_through_ratio: 0.70
+  pass_through_window_minutes_real: 5.0
+
+  # High-velocity burst: >= 3 transactions within 2 real minutes by the same account.
+  burst_velocity_count: 3
+  burst_window_minutes_real: 2.0
+
+  # Maximum single transfer amount for safety
+  max_transfer_amount: 50000.0
+
+  # Account starting virtual balance
+  default_starting_balance: 10000.0
+
+  # Rate limit: maximum transfers per account within sliding real-time window
+  rate_limit_max_txns: 5
+  rate_limit_window_seconds: 10.0
+
+  # Room auto-expiry
+  room_ttl_seconds: 7200  # 2 hours
+
+# Containment Rules
+containment:
+  # Auto-hold peers sharing device or explicit transfer hop on confirmed BLOCK
+  auto_hold_shared_device: true
+  auto_hold_direct_payee: true
+  # Raw LAN IP is considered weak residential NAT; monitor only
+  monitor_shared_ip_only: true

@@ -1,0 +1,89 @@
+# configs/demo_mule_ring.yaml
+scenario_name: "The Four-Account Mule Ring"
+description: "Live detection and containment of a 4-account synthetic mule ring across 7 narrative acts"
+seed: 42
+simulation_label: "simulation"
+
+actors:
+  mules:
+    A:
+      account_id: "CUST_MULE_A"
+      device_id: "DEV_MULE_A1"
+      ip_prefix: "198.51.100.14"
+      initial_balance: 500.0
+      dormancy_days: 65
+    B:
+      account_id: "CUST_MULE_B"
+      device_id: "DEV_MULE_BC_SHARED"
+      ip_prefix: "198.51.100.14"   # Shares IP with A
+      initial_balance: 350.0
+      dormancy_days: 72
+    C:
+      account_id: "CUST_MULE_C"
+      device_id: "DEV_MULE_BC_SHARED"  # Shares device with B
+      ip_prefix: "203.0.113.88"
+      initial_balance: 420.0
+      dormancy_days: 58
+    D:
+      account_id: "CUST_MULE_D"
+      device_id: "DEV_MULE_D1"
+      ip_prefix: "203.0.113.99"
+      initial_balance: 200.0
+      dormancy_days: 80
+
+  innocent_household:
+    account_id: "CUST_INNOCENT_HOUSEHOLD"
+    device_id: "DEV_HOUSEHOLD_TV"
+    ip_prefix: "198.51.100.14"    # Legitimate neighbor sharing IP with A
+    initial_balance: 45000.0
+    dormancy_days: 0
+
+  victims:
+    count: 12
+    id_prefix: "CUST_VICTIM_"
+    initial_balance: 25000.0
+
+  cashout:
+    account_id: "MERCHANT_CRYPTO_EXCHANGE"
+    name: "External Fast Payout Gateway"
+
+  background_traffic:
+    accounts: 10
+    txns_per_act: 3
+
+acts:
+  - act: 1
+    title: "Normal Day"
+    narrative: "Ordinary payments flowing between legitimate customers and everyday merchants. All indicators green."
+    step: 701
+  - act: 2
+    title: "Ring Wakes Up"
+    narrative: "Four dormant accounts (A-D) suddenly activate on new devices. Member A & B share an IP; Member B & C share a mobile device."
+    step: 702
+  - act: 3
+    title: "Victims Pay"
+    narrative: "12 victims are coerced by an investment scam to transfer funds to Member A. Member A's 24h fan-in counter rapidly climbs."
+    step: 703
+  - act: 4
+    title: "Layering"
+    narrative: "Money hops rapidly from Member A -> B -> C -> D within minutes. Outflow/inflow pass-through ratio reaches 95% on each mule."
+    step: 704
+  - act: 5
+    title: "Detection"
+    narrative: "Real-time XGBoost model and rules evaluate incoming transactions. Score spikes from 0.08 to 0.94; plain-English SHAP reasons flag the fan-in and pass-through."
+    step: 705
+  - act: 6
+    title: "Containment"
+    narrative: "Member A is confirmed BLOCKED and written to Redis. Graph containment policy traverses shared device/IP links: Members B, C, D placed on HOLD; Innocent household neighbor is tagged for MONITORING only."
+    step: 706
+  - act: 7
+    title: "Cash-Out Attempt"
+    narrative: "Member D attempts to withdraw ₹48,000 to an external cash-out gateway. Pre-scoring Redis blocklist check intercepts and declines the payment in <2ms."
+    step: 707
+
+containment_policy:
+  confirmed_block_action: "BLOCK"
+  shared_device_action: "HOLD"
+  shared_ip_action: "REVIEW"
+  household_action: "MONITOR"
+  auto_unfreeze_minutes: 1440

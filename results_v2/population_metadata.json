@@ -1,0 +1,21 @@
+{
+  "train": {
+    "rows": 144165,
+    "positives": 6729,
+    "prevalence": 0.046676,
+    "subsampling": "Deterministic modulo 5 on background native legitimate traffic (balanced sample without dropping rare labels)"
+  },
+  "val": {
+    "rows": 8606,
+    "positives": 1415,
+    "prevalence": 0.16442,
+    "subsampling": "Deterministic modulo 5 on background native legitimate traffic"
+  },
+  "test": {
+    "rows": 104623,
+    "positives": 1945,
+    "prevalence": 0.018591,
+    "subsampling": "NONE - full test split at natural prevalence (100% of test stream replayed)",
+    "explanation_7676_vs_104850": "The earlier 7,676 row figure was produced by applying a 1:20 (5%) modulo filter on native legitimate background rows in the test window (5,099 background + 1,600 native fraud + 977 injected = 7,676 rows). In this remediated evaluation, the filter was removed to evaluate the entire 104,623 transactions at natural prevalence."
+  }
+}

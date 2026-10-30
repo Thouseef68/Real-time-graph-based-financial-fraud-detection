@@ -1,0 +1,128 @@
+{
+  "timestamp": "2026-10-29T17:44:27Z",
+  "three_seed_stability": {
+    "per_seed": [
+      {
+        "seed": 42,
+        "pr_auc": 0.99663,
+        "roc_auc": 0.99996,
+        "recall_at_1pct": 0.98458,
+        "recall_at_0_5pct": 0.98458
+      },
+      {
+        "seed": 43,
+        "pr_auc": 0.99669,
+        "roc_auc": 0.99996,
+        "recall_at_1pct": 0.98715,
+        "recall_at_0_5pct": 0.98715
+      },
+      {
+        "seed": 44,
+        "pr_auc": 0.99663,
+        "roc_auc": 0.99996,
+        "recall_at_1pct": 0.98972,
+        "recall_at_0_5pct": 0.98972
+      }
+    ],
+    "mean_pr_auc": 0.99665,
+    "std_pr_auc": 3e-05,
+    "mean_roc_auc": 0.99996,
+    "std_roc_auc": 0.0,
+    "mean_recall_at_1pct": 0.98715,
+    "std_recall_at_1pct": 0.0021,
+    "mean_recall_at_0_5pct": 0.98715,
+    "std_recall_at_0_5pct": 0.0021
+  },
+  "cost_based_threshold_sweeps": [
+    {
+      "scenario": "standard_analyst",
+      "analyst_cost_per_review": 25.0,
+      "fn_penalty_multiplier": 1.0,
+      "cost_optimal_threshold": 0.05,
+      "min_total_cost": 11400.0,
+      "precision": 0.8101,
+      "recall": 1.0,
+      "fpr": 0.00444,
+      "flagged_count": 2401
+    },
+    {
+      "scenario": "high_throughput_low_cost",
+      "analyst_cost_per_review": 10.0,
+      "fn_penalty_multiplier": 1.0,
+      "cost_optimal_threshold": 0.05,
+      "min_total_cost": 4560.0,
+      "precision": 0.8101,
+      "recall": 1.0,
+      "fpr": 0.00444,
+      "flagged_count": 2401
+    },
+    {
+      "scenario": "expensive_investigation",
+      "analyst_cost_per_review": 75.0,
+      "fn_penalty_multiplier": 1.0,
+      "cost_optimal_threshold": 0.05,
+      "min_total_cost": 34200.0,
+      "precision": 0.8101,
+      "recall": 1.0,
+      "fpr": 0.00444,
+      "flagged_count": 2401
+    },
+    {
+      "scenario": "severe_regulatory_penalty",
+      "analyst_cost_per_review": 25.0,
+      "fn_penalty_multiplier": 2.5,
+      "cost_optimal_threshold": 0.05,
+      "min_total_cost": 11400.0,
+      "precision": 0.8101,
+      "recall": 1.0,
+      "fpr": 0.00444,
+      "flagged_count": 2401
+    }
+  ],
+  "time_slice_stability": [
+    {
+      "slice_index": 1,
+      "step_range": "601-635",
+      "transactions": 14283,
+      "frauds": 422,
+      "fraud_rate": 0.02955,
+      "pr_auc": 0.9999,
+      "roc_auc": 1.0,
+      "recall": 1.0,
+      "precision": 0.9906
+    },
+    {
+      "slice_index": 2,
+      "step_range": "636-671",
+      "transactions": 23291,
+      "frauds": 496,
+      "fraud_rate": 0.0213,
+      "pr_auc": 0.9991,
+      "roc_auc": 1.0,
+      "recall": 0.9919,
+      "precision": 0.9899
+    },
+    {
+      "slice_index": 3,
+      "step_range": "672-707",
+      "transactions": 58236,
+      "frauds": 568,
+      "fraud_rate": 0.00975,
+      "pr_auc": 0.9986,
+      "roc_auc": 1.0,
+      "recall": 0.9894,
+      "precision": 0.9825
+    },
+    {
+      "slice_index": 4,
+      "step_range": "708-743",
+      "transactions": 8813,
+      "frauds": 459,
+      "fraud_rate": 0.05208,
+      "pr_auc": 0.9978,
+      "roc_auc": 0.9999,
+      "recall": 0.9978,
+      "precision": 0.9935
+    }
+  ]
+}

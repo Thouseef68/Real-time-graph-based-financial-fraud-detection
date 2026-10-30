@@ -1,0 +1,322 @@
+{
+  "timestamp": "2026-10-29T01:42:26.854453",
+  "total_dataset_rows": 6367603,
+  "check_a_drain_model": {
+    "passed": true,
+    "injected_rows": 4983,
+    "injected_fraud_rate": 0.31567328918322296,
+    "drain_only_pr_auc_injected": 0.31035996702232477,
+    "drain_only_roc_auc_injected": 0.5053363858215898,
+    "drain_only_pr_auc_native_test": 0.8938487083665526
+  },
+  "check_b_ks_statistics": {
+    "amount_ks_statistic": 0.8300218881118882,
+    "amount_p_value": 0.0,
+    "balance_ks_statistic": 0.3877136300063573,
+    "balance_p_value": 4.00606528195811e-210,
+    "injected_fraud_count": 1573,
+    "legit_sample_count": 100000
+  },
+  "check_c_counts_by_split_and_scenario": {
+    "records": [
+      {
+        "split": "test",
+        "scenario": "bill_payment_burst",
+        "total_txns": 25,
+        "fraud_txns": 0,
+        "fraud_rate": 0.0,
+        "unique_groups": 4,
+        "fraud_rate_pct": 0.0
+      },
+      {
+        "split": "test",
+        "scenario": "burst_takeover",
+        "total_txns": 162,
+        "fraud_txns": 162,
+        "fraud_rate": 1.0,
+        "unique_groups": 10,
+        "fraud_rate_pct": 100.0
+      },
+      {
+        "split": "test",
+        "scenario": "dormant_reactivation",
+        "total_txns": 4,
+        "fraud_txns": 4,
+        "fraud_rate": 1.0,
+        "unique_groups": 4,
+        "fraud_rate_pct": 100.0
+      },
+      {
+        "split": "test",
+        "scenario": "household_shared_device",
+        "total_txns": 68,
+        "fraud_txns": 0,
+        "fraud_rate": 0.0,
+        "unique_groups": 5,
+        "fraud_rate_pct": 0.0
+      },
+      {
+        "split": "test",
+        "scenario": "large_legitimate_drain",
+        "total_txns": 4,
+        "fraud_txns": 0,
+        "fraud_rate": 0.0,
+        "unique_groups": 4,
+        "fraud_rate_pct": 0.0
+      },
+      {
+        "split": "test",
+        "scenario": "merchant_high_fanin",
+        "total_txns": 300,
+        "fraud_txns": 0,
+        "fraud_rate": 0.0,
+        "unique_groups": 3,
+        "fraud_rate_pct": 0.0
+      },
+      {
+        "split": "test",
+        "scenario": "mule_fanin_fanout",
+        "total_txns": 77,
+        "fraud_txns": 7,
+        "fraud_rate": 0.09090909090909091,
+        "unique_groups": 4,
+        "fraud_rate_pct": 9.09
+      },
+      {
+        "split": "test",
+        "scenario": "payroll",
+        "total_txns": 200,
+        "fraud_txns": 0,
+        "fraud_rate": 0.0,
+        "unique_groups": 4,
+        "fraud_rate_pct": 0.0
+      },
+      {
+        "split": "test",
+        "scenario": "paysim_native",
+        "total_txns": 103573,
+        "fraud_txns": 1600,
+        "fraud_rate": 0.015448041477991368,
+        "unique_groups": 1,
+        "fraud_rate_pct": 1.54
+      },
+      {
+        "split": "test",
+        "scenario": "shared_device_ring",
+        "total_txns": 132,
+        "fraud_txns": 132,
+        "fraud_rate": 1.0,
+        "unique_groups": 2,
+        "fraud_rate_pct": 100.0
+      },
+      {
+        "split": "test",
+        "scenario": "structuring",
+        "total_txns": 24,
+        "fraud_txns": 24,
+        "fraud_rate": 1.0,
+        "unique_groups": 3,
+        "fraud_rate_pct": 100.0
+      },
+      {
+        "split": "train",
+        "scenario": "bill_payment_burst",
+        "total_txns": 73,
+        "fraud_txns": 0,
+        "fraud_rate": 0.0,
+        "unique_groups": 12,
+        "fraud_rate_pct": 0.0
+      },
+      {
+        "split": "train",
+        "scenario": "burst_takeover",
+        "total_txns": 487,
+        "fraud_txns": 487,
+        "fraud_rate": 1.0,
+        "unique_groups": 30,
+        "fraud_rate_pct": 100.0
+      },
+      {
+        "split": "train",
+        "scenario": "dormant_reactivation",
+        "total_txns": 12,
+        "fraud_txns": 12,
+        "fraud_rate": 1.0,
+        "unique_groups": 12,
+        "fraud_rate_pct": 100.0
+      },
+      {
+        "split": "train",
+        "scenario": "household_shared_device",
+        "total_txns": 172,
+        "fraud_txns": 0,
+        "fraud_rate": 0.0,
+        "unique_groups": 15,
+        "fraud_rate_pct": 0.0
+      },
+      {
+        "split": "train",
+        "scenario": "large_legitimate_drain",
+        "total_txns": 12,
+        "fraud_txns": 0,
+        "fraud_rate": 0.0,
+        "unique_groups": 12,
+        "fraud_rate_pct": 0.0
+      },
+      {
+        "split": "train",
+        "scenario": "merchant_high_fanin",
+        "total_txns": 900,
+        "fraud_txns": 0,
+        "fraud_rate": 0.0,
+        "unique_groups": 9,
+        "fraud_rate_pct": 0.0
+      },
+      {
+        "split": "train",
+        "scenario": "mule_fanin_fanout",
+        "total_txns": 283,
+        "fraud_txns": 22,
+        "fraud_rate": 0.07773851590106007,
+        "unique_groups": 12,
+        "fraud_rate_pct": 7.77
+      },
+      {
+        "split": "train",
+        "scenario": "payroll",
+        "total_txns": 600,
+        "fraud_txns": 0,
+        "fraud_rate": 0.0,
+        "unique_groups": 12,
+        "fraud_rate_pct": 0.0
+      },
+      {
+        "split": "train",
+        "scenario": "paysim_native",
+        "total_txns": 6061807,
+        "fraud_txns": 5561,
+        "fraud_rate": 0.0009173832159288476,
+        "unique_groups": 1,
+        "fraud_rate_pct": 0.09
+      },
+      {
+        "split": "train",
+        "scenario": "shared_device_ring",
+        "total_txns": 318,
+        "fraud_txns": 318,
+        "fraud_rate": 1.0,
+        "unique_groups": 6,
+        "fraud_rate_pct": 100.0
+      },
+      {
+        "split": "train",
+        "scenario": "structuring",
+        "total_txns": 72,
+        "fraud_txns": 72,
+        "fraud_rate": 1.0,
+        "unique_groups": 9,
+        "fraud_rate_pct": 100.0
+      },
+      {
+        "split": "val",
+        "scenario": "bill_payment_burst",
+        "total_txns": 31,
+        "fraud_txns": 0,
+        "fraud_rate": 0.0,
+        "unique_groups": 4,
+        "fraud_rate_pct": 0.0
+      },
+      {
+        "split": "val",
+        "scenario": "burst_takeover",
+        "total_txns": 187,
+        "fraud_txns": 187,
+        "fraud_rate": 1.0,
+        "unique_groups": 10,
+        "fraud_rate_pct": 100.0
+      },
+      {
+        "split": "val",
+        "scenario": "dormant_reactivation",
+        "total_txns": 4,
+        "fraud_txns": 4,
+        "fraud_rate": 1.0,
+        "unique_groups": 4,
+        "fraud_rate_pct": 100.0
+      },
+      {
+        "split": "val",
+        "scenario": "household_shared_device",
+        "total_txns": 68,
+        "fraud_txns": 0,
+        "fraud_rate": 0.0,
+        "unique_groups": 5,
+        "fraud_rate_pct": 0.0
+      },
+      {
+        "split": "val",
+        "scenario": "large_legitimate_drain",
+        "total_txns": 4,
+        "fraud_txns": 0,
+        "fraud_rate": 0.0,
+        "unique_groups": 4,
+        "fraud_rate_pct": 0.0
+      },
+      {
+        "split": "val",
+        "scenario": "merchant_high_fanin",
+        "total_txns": 300,
+        "fraud_txns": 0,
+        "fraud_rate": 0.0,
+        "unique_groups": 3,
+        "fraud_rate_pct": 0.0
+      },
+      {
+        "split": "val",
+        "scenario": "mule_fanin_fanout",
+        "total_txns": 132,
+        "fraud_txns": 10,
+        "fraud_rate": 0.07575757575757576,
+        "unique_groups": 4,
+        "fraud_rate_pct": 7.58
+      },
+      {
+        "split": "val",
+        "scenario": "payroll",
+        "total_txns": 200,
+        "fraud_txns": 0,
+        "fraud_rate": 0.0,
+        "unique_groups": 4,
+        "fraud_rate_pct": 0.0
+      },
+      {
+        "split": "val",
+        "scenario": "paysim_native",
+        "total_txns": 197240,
+        "fraud_txns": 1052,
+        "fraud_rate": 0.005333603731494625,
+        "unique_groups": 1,
+        "fraud_rate_pct": 0.53
+      },
+      {
+        "split": "val",
+        "scenario": "shared_device_ring",
+        "total_txns": 108,
+        "fraud_txns": 108,
+        "fraud_rate": 1.0,
+        "unique_groups": 2,
+        "fraud_rate_pct": 100.0
+      },
+      {
+        "split": "val",
+        "scenario": "structuring",
+        "total_txns": 24,
+        "fraud_txns": 24,
+        "fraud_rate": 1.0,
+        "unique_groups": 3,
+        "fraud_rate_pct": 100.0
+      }
+    ],
+    "markdown_table": "| Split | Scenario | Total Txns | Fraud Txns | Fraud Rate | Unique Groups |\n|---|---|---|---|---|---|\n| test | bill_payment_burst | 25 | 0 | 0.00% | 4 |\n| test | burst_takeover | 162 | 162 | 100.00% | 10 |\n| test | dormant_reactivation | 4 | 4 | 100.00% | 4 |\n| test | household_shared_device | 68 | 0 | 0.00% | 5 |\n| test | large_legitimate_drain | 4 | 0 | 0.00% | 4 |\n| test | merchant_high_fanin | 300 | 0 | 0.00% | 3 |\n| test | mule_fanin_fanout | 77 | 7 | 9.09% | 4 |\n| test | payroll | 200 | 0 | 0.00% | 4 |\n| test | paysim_native | 103,573 | 1,600 | 1.54% | 1 |\n| test | shared_device_ring | 132 | 132 | 100.00% | 2 |\n| test | structuring | 24 | 24 | 100.00% | 3 |\n| train | bill_payment_burst | 73 | 0 | 0.00% | 12 |\n| train | burst_takeover | 487 | 487 | 100.00% | 30 |\n| train | dormant_reactivation | 12 | 12 | 100.00% | 12 |\n| train | household_shared_device | 172 | 0 | 0.00% | 15 |\n| train | large_legitimate_drain | 12 | 0 | 0.00% | 12 |\n| train | merchant_high_fanin | 900 | 0 | 0.00% | 9 |\n| train | mule_fanin_fanout | 283 | 22 | 7.77% | 12 |\n| train | payroll | 600 | 0 | 0.00% | 12 |\n| train | paysim_native | 6,061,807 | 5,561 | 0.09% | 1 |\n| train | shared_device_ring | 318 | 318 | 100.00% | 6 |\n| train | structuring | 72 | 72 | 100.00% | 9 |\n| val | bill_payment_burst | 31 | 0 | 0.00% | 4 |\n| val | burst_takeover | 187 | 187 | 100.00% | 10 |\n| val | dormant_reactivation | 4 | 4 | 100.00% | 4 |\n| val | household_shared_device | 68 | 0 | 0.00% | 5 |\n| val | large_legitimate_drain | 4 | 0 | 0.00% | 4 |\n| val | merchant_high_fanin | 300 | 0 | 0.00% | 3 |\n| val | mule_fanin_fanout | 132 | 10 | 7.58% | 4 |\n| val | payroll | 200 | 0 | 0.00% | 4 |\n| val | paysim_native | 197,240 | 1,052 | 0.53% | 1 |\n| val | shared_device_ring | 108 | 108 | 100.00% | 2 |\n| val | structuring | 24 | 24 | 100.00% | 3 |"
+  }
+}
