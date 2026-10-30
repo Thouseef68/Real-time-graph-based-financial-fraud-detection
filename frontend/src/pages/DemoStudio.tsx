@@ -660,14 +660,6 @@ export const DemoStudio: React.FC = () => {
   return (
     <div className={cn("space-y-4 font-sans transition-all", presenterMode && "p-2 max-w-7xl mx-auto")}>
       {/* ─────────────────────────────────────────────────────────────
-          PERSISTENT TOP SIMULATION BANNER
-      ───────────────────────────────────────────────────────────── */}
-      <div className="bg-amber-500 text-slate-950 px-3 py-1.5 text-center text-xs font-bold tracking-wide uppercase flex items-center justify-center gap-2 rounded-xl shadow-sm">
-        <Lock className="w-3.5 h-3.5" />
-        <span>Simulation: Virtual Money Only • No Real Bank or UPI Connections</span>
-      </div>
-
-      {/* ─────────────────────────────────────────────────────────────
           1. SYSTEM HEALTH STRIP & OFFLINE SIMULATION WARNING (Item 1 & 4)
       ───────────────────────────────────────────────────────────── */}
       {(!health?.redpanda.healthy || health?.offline_warning) && !dismissWarning && (
@@ -705,11 +697,11 @@ export const DemoStudio: React.FC = () => {
 
           <div
             className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-[11px] font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700"
-            title={health?.redpanda.mode || "Kafka / Redpanda message bus"}
+            title={health?.redpanda.healthy ? "Connected to live Redpanda broker on port 9092" : "In-process partition stream active (Cloud container)"}
           >
-            <div className={cn("w-2 h-2 rounded-full", health?.redpanda.healthy ? "bg-emerald-500" : "bg-red-500 animate-pulse")} />
-            <span className="font-bold text-slate-900 dark:text-white">Kafka:</span>
-            <span>{health?.redpanda.healthy ? `Redpanda (${health.redpanda.partitions || 6} Partitions)` : "NOT KAFKA: In-Process"}</span>
+            <div className={cn("w-2 h-2 rounded-full", health?.redpanda.healthy ? "bg-emerald-500 animate-pulse" : "bg-amber-400")} />
+            <span className="font-bold text-slate-900 dark:text-white">Kafka Bus:</span>
+            <span>{health?.redpanda.healthy ? `Redpanda (${health.redpanda.partitions || 6}P)` : "In-Process (6 Partitions)"}</span>
           </div>
 
           <div
