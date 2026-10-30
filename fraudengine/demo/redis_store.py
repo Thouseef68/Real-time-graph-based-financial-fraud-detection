@@ -10,8 +10,104 @@ from typing import Any, Callable, Dict, List, Optional, Set, Tuple
 logger = logging.getLogger(__name__)
 
 
+class InMemoryFallbackRedis:
+    """Lightweight in-memory RESP dict fallback if neither redis nor fakeredis is installed."""
+    def __init__(self):
+        self._sets = {}
+        self._hashes = {}
+        self._strings = {}
+        self._zsets = {}
+
+    def ping(self) -> bool:
+        return True
+
+    def sismember(self, key: str, member: Any) -> bool:
+        return str(member) in self._sets.get(key, set())
+
+    def smembers(self, key: str) -> set:
+        return set(self._sets.get(key, set()))
+
+    def sadd(self, key: str, *members: Any) -> int:
+        if key not in self._sets:
+            self._sets[key] = set()
+        added = 0
+        for m in members:
+            sm = str(m)
+            if sm not in self._sets[key]:
+                self._sets[key].add(sm)
+                added += 1
+        return added
+
+    def scard(self, key: str) -> int:
+        return len(self._sets.get(key, set()))
+
+    def hset(self, key: str, key_or_none: Any = None, value: Any = None, mapping: Optional[Dict[str, Any]] = None) -> int:
+        if key not in self._hashes:
+            self._hashes[key] = {}
+        count = 0
+        if mapping:
+            for k, v in mapping.items():
+                self._hashes[key][str(k)] = str(v)
+                count += 1
+        if key_or_none is not None and value is not None:
+            self._hashes[key][str(key_or_none)] = str(value)
+            count += 1
+        return count
+
+    def hgetall(self, key: str) -> Dict[str, str]:
+        return dict(self._hashes.get(key, {}))
+
+    def get(self, key: str) -> Optional[str]:
+        return self._strings.get(key)
+
+    def set(self, key: str, val: Any) -> bool:
+        self._strings[key] = str(val)
+        return True
+
+    def incrbyfloat(self, key: str, amount: float) -> float:
+        cur = float(self._strings.get(key, 0.0))
+        cur += float(amount)
+        self._strings[key] = str(cur)
+        return cur
+
+    def zcard(self, key: str) -> int:
+        return len(self._zsets.get(key, {}))
+
+    def zadd(self, key: str, mapping: Dict[str, float]) -> int:
+        if key not in self._zsets:
+            self._zsets[key] = {}
+        added = 0
+        for m, score in mapping.items():
+            if str(m) not in self._zsets[key]:
+                added += 1
+            self._zsets[key][str(m)] = float(score)
+        return added
+
+    def keys(self, pattern: str = "*") -> List[str]:
+        import fnmatch
+        all_keys = set(self._sets.keys()) | set(self._hashes.keys()) | set(self._strings.keys()) | set(self._zsets.keys())
+        return [k for k in all_keys if fnmatch.fnmatch(k, pattern)]
+
+    def delete(self, *keys: str) -> int:
+        deleted = 0
+        for k in keys:
+            if k in self._sets:
+                del self._sets[k]
+                deleted += 1
+            if k in self._hashes:
+                del self._hashes[k]
+                deleted += 1
+            if k in self._strings:
+                del self._strings[k]
+                deleted += 1
+            if k in self._zsets:
+                del self._zsets[k]
+                deleted += 1
+        return deleted
+
+
 class DemoRedisStore:
-    """Manages Redis connection (or FakeRedis) with delta tracking for live UI display."""
+    """Redis client wrapper with automatic fakeredis or in-memory fallback and delta inspection."""
 
     def __init__(self, host: str = "localhost", port: int = 6379, prefix: str = "demo:"):
         self.prefix = prefix
@@ -39,14 +135,20 @@ class DemoRedisStore:
                 self.is_real = True
                 logger.info("DemoRedisStore connected to live Redis server.")
             except Exception:
-                import fakeredis
-                self.client = fakeredis.FakeRedis(decode_responses=True)
-                self.is_real = False
+                self._init_in_memory()
         else:
+            self._init_in_memory()
+
+    def _init_in_memory(self) -> None:
+        try:
             import fakeredis
             self.client = fakeredis.FakeRedis(decode_responses=True)
             self.is_real = False
             logger.info("DemoRedisStore initialized in-memory FakeRedis.")
+        except Exception:
+            self.client = InMemoryFallbackRedis()
+            self.is_real = False
+            logger.info("DemoRedisStore initialized native InMemoryFallbackRedis (fakeredis unavailable).")
 
     def on_delta(self, callback: Callable[[Dict[str, Any]], None]) -> None:
         """Register a callback for Redis state mutations."""

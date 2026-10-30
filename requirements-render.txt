@@ -7,3 +7,4 @@ pydantic>=2.7.0
 python-multipart>=0.0.9
 networkx>=3.2.0
 shap>=0.45.0
+fakeredis>=2.23.0
