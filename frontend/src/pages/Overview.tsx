@@ -51,7 +51,7 @@ export const Overview: React.FC = () => {
 
   useEffect(() => {
     fetchKPIs().then(setKpis);
-    fetchAlerts({ size: 5 }).then((data) => setRecentAlerts(data.items));
+    fetchAlerts({ size: 5 }).then((data: any) => setRecentAlerts(data.items));
   }, []);
 
   return (

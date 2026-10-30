@@ -11,8 +11,9 @@ dist/
 downloads/
 eggs/
 .eggs/
-lib/
-lib64/
+/lib/
+/lib64/
+!frontend/src/lib/
 parts/
 sdist/
 var/
@@ -29,11 +30,17 @@ data/cache/
 *.parquet
 *.db
 *.sqlite
+data/*.csv
+data/*.pkl
+*.csv
+*.pkl
 
 # Node / Frontend
 node_modules/
 .npm
 dist/
+.vite/
+frontend/.vite/
 
 # IDE / System
 .vscode/

@@ -27,7 +27,7 @@ export const LiveAlerts: React.FC = () => {
     const tierParam = currentTier === "ALL" ? undefined : currentTier;
     const statusParam = currentStatus === "ALL" ? undefined : currentStatus;
     fetchAlerts({ tier: tierParam, status: statusParam, size: 100 })
-      .then((data) => {
+      .then((data: any) => {
         setAlerts(data.items);
         setLoading(false);
       });

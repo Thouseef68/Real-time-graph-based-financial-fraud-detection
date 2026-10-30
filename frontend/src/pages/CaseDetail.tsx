@@ -32,7 +32,7 @@ export const CaseDetail: React.FC = () => {
 
   useEffect(() => {
     if (caseId) {
-      fetchAlertDetail(caseId).then((data) => {
+      fetchAlertDetail(caseId).then((data: any) => {
         setCaseData(data);
         setLoading(false);
       });
