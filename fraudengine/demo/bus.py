@@ -26,7 +26,9 @@ class DemoMessageBus:
         run_id: str = "live_sandbox",
         allow_offline: bool = False,
     ):
-        self.bootstrap_servers = bootstrap_servers
+        import os
+        env_servers = os.getenv("KAFKA_BOOTSTRAP_SERVERS") or os.getenv("REDPANDA_BROKERS")
+        self.bootstrap_servers = env_servers.strip() if env_servers else bootstrap_servers
         self.run_id = run_id
         self.allow_offline = allow_offline
         self.is_real = False

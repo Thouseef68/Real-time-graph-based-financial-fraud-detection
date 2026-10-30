@@ -918,16 +918,18 @@ async def get_room_debug(room_code: str):
 
 @app.get("/api/v1/live/rooms/{room_code}/join-info", tags=["Live Sandbox"])
 async def get_room_join_info(room_code: str, request: Request):
-    """Get LAN IP, port, join URL, and room metadata for phone QR code scanning."""
-    # Try port from request host header if available
+    """Get LAN IP, port, join URL, and room metadata for phone QR code scanning across any network."""
+    proto = request.headers.get("x-forwarded-proto", request.url.scheme or "https")
+    host = request.headers.get("x-forwarded-host", request.headers.get("host", ""))
+    base_url = f"{proto}://{host}".rstrip("/") if host else str(request.base_url).rstrip("/")
+
     port = 5173
     try:
-        host_header = request.headers.get("host", "")
-        if ":" in host_header:
-            port = int(host_header.split(":")[1])
+        if ":" in host:
+            port = int(host.split(":")[1])
     except Exception:
         pass
-    info = state.live_manager.get_room_join_info(room_code, port=5173)
+    info = state.live_manager.get_room_join_info(room_code, port=port, base_url=base_url)
     return info
 
 

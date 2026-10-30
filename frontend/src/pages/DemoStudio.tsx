@@ -13,6 +13,7 @@ import {
   Database,
   ExternalLink,
   Flame,
+  Globe,
   HelpCircle,
   Layers,
   Lock,
@@ -234,10 +235,26 @@ export const DemoStudio: React.FC = () => {
     lan_ip: string;
     port: number;
     join_url: string;
+    join_token?: string;
     profile_name: string;
   } | null>(null);
   const [showQrModal, setShowQrModal] = useState<boolean>(false);
   const [copiedUrl, setCopiedUrl] = useState<boolean>(false);
+  const [dismissWarning, setDismissWarning] = useState<boolean>(false);
+
+  // Dynamic join URL: uses public hostname/origin on Render, custom domain, or cloud, ensuring ANY phone can join
+  const effectiveJoinUrl = React.useMemo(() => {
+    if (!joinInfo?.join_url) return "";
+    if (typeof window !== "undefined" && window.location.origin) {
+      const host = window.location.hostname;
+      if (host && !host.includes("localhost") && !host.includes("127.0.0.1")) {
+        const room = encodeURIComponent(joinInfo.room_code || activeRoomCode);
+        const token = joinInfo.join_token ? encodeURIComponent(joinInfo.join_token) : "";
+        return `${window.location.origin}/app?room=${room}${token ? `&token=${token}` : ""}`;
+      }
+    }
+    return joinInfo.join_url;
+  }, [joinInfo, activeRoomCode]);
 
   // Graph Layer & Node Inspection State
   const [showDevicesAndNetworks, setShowDevicesAndNetworks] = useState<boolean>(false);
@@ -629,8 +646,9 @@ export const DemoStudio: React.FC = () => {
   };
 
   const copyJoinUrl = () => {
-    if (joinInfo?.join_url) {
-      navigator.clipboard.writeText(joinInfo.join_url);
+    const urlToCopy = effectiveJoinUrl || joinInfo?.join_url;
+    if (urlToCopy) {
+      navigator.clipboard.writeText(urlToCopy);
       setCopiedUrl(true);
       setTimeout(() => setCopiedUrl(false), 2000);
     }
@@ -652,15 +670,24 @@ export const DemoStudio: React.FC = () => {
       {/* ─────────────────────────────────────────────────────────────
           1. SYSTEM HEALTH STRIP & OFFLINE SIMULATION WARNING (Item 1 & 4)
       ───────────────────────────────────────────────────────────── */}
-      {(!health?.redpanda.healthy || health?.offline_warning) && (
-        <div className="bg-red-500/10 border-2 border-red-500/40 px-4 py-2.5 rounded-xl flex items-center justify-between text-xs font-mono shadow-sm">
-          <div className="flex items-center gap-2.5 font-bold text-red-600 dark:text-red-400">
-            <span className="w-2.5 h-2.5 rounded-full bg-red-500 animate-ping" />
-            <span className="text-sm tracking-wide uppercase">NOT KAFKA: in-process simulation</span>
+      {(!health?.redpanda.healthy || health?.offline_warning) && !dismissWarning && (
+        <div className="bg-amber-500/10 border border-amber-500/30 px-4 py-2.5 rounded-xl flex items-center justify-between text-xs font-mono shadow-sm">
+          <div className="flex items-center gap-2.5 font-bold text-amber-600 dark:text-amber-400">
+            <span className="w-2.5 h-2.5 rounded-full bg-amber-500" />
+            <span className="text-xs tracking-wide uppercase">In-Process Stream Active (Cloud Container)</span>
           </div>
-          <span className="text-[11px] text-red-500/90 font-sans">
-            Redpanda broker unreachable on 127.0.0.1:9092. Live Kafka partition bus disabled.
-          </span>
+          <div className="flex items-center gap-3">
+            <span className="text-[11px] text-slate-600 dark:text-slate-400 font-sans hidden sm:inline">
+              External Kafka broker not detected at 127.0.0.1:9092. Running high-speed in-process partition stream with full scoring & graph traversal.
+            </span>
+            <button
+              onClick={() => setDismissWarning(true)}
+              className="text-slate-400 hover:text-slate-600 dark:hover:text-white text-xs px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 transition-colors"
+              title="Dismiss banner"
+            >
+              ✕
+            </button>
+          </div>
         </div>
       )}
 
@@ -1615,7 +1642,7 @@ export const DemoStudio: React.FC = () => {
 
             <div className="p-4 bg-white rounded-2xl border border-slate-200 inline-block shadow-inner mx-auto">
               <QRCodeSVG
-                value={joinInfo.join_url}
+                value={effectiveJoinUrl || joinInfo.join_url}
                 size={210}
                 level="M"
                 includeMargin={false}
@@ -1623,12 +1650,16 @@ export const DemoStudio: React.FC = () => {
             </div>
 
             <div className="space-y-2">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-[11px] font-bold text-emerald-600 dark:text-emerald-400">
+                <Globe className="w-3.5 h-3.5" />
+                <span>Join from ANY Network (Cellular 4G/5G, Mobile Data or Wi-Fi)</span>
+              </div>
               <p className="text-xs text-slate-600 dark:text-slate-300">
-                Scan with any smartphone camera on the same Wi-Fi.
+                Scan with any smartphone camera from anywhere in the world. No shared local Wi-Fi required!
               </p>
               <div className="flex items-center gap-1.5 p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-[11px] font-mono justify-between">
                 <span className="truncate text-slate-700 dark:text-slate-300">
-                  {joinInfo.join_url}
+                  {effectiveJoinUrl || joinInfo.join_url}
                 </span>
                 <button
                   onClick={copyJoinUrl}

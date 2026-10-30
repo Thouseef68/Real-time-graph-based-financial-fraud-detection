@@ -244,14 +244,31 @@ class LiveSandboxManager:
             return True
         return False
 
-    def get_room_join_info(self, room_code: str, port: int = 5173) -> Dict[str, Any]:
+    def get_room_join_info(
+        self,
+        room_code: str,
+        port: int = 5173,
+        base_url: Optional[str] = None,
+    ) -> Dict[str, Any]:
         room = self.get_room(room_code)
         join_token = room.join_token if room else ""
 
-        # Check if PUBLIC_BASE_URL is set in environment or .env
+        # Priority 1: Direct request base_url passed in from live client request
         import os
-        public_base = os.getenv("PUBLIC_BASE_URL", "").strip().rstrip("/")
-        if not public_base:
+        public_base = (base_url or "").strip().rstrip("/")
+        
+        # If public_base is localhost or 127.0.0.1, check Render or env vars
+        if not public_base or "localhost" in public_base or "127.0.0.1" in public_base:
+            render_ext = os.getenv("RENDER_EXTERNAL_URL", "").strip().rstrip("/")
+            if render_ext:
+                public_base = render_ext
+
+        if not public_base or "localhost" in public_base or "127.0.0.1" in public_base:
+            env_base = os.getenv("PUBLIC_BASE_URL", "").strip().rstrip("/")
+            if env_base:
+                public_base = env_base
+
+        if not public_base or "localhost" in public_base or "127.0.0.1" in public_base:
             env_file = ROOT / ".env"
             if env_file.exists():
                 try:
@@ -262,7 +279,9 @@ class LiveSandboxManager:
                                 break
                 except Exception:
                     pass
-        if public_base:
+
+        # If we have a valid public base (not localhost), use it for universal internet join
+        if public_base and not ("127.0.0.1" in public_base or "localhost" in public_base):
             join_url = f"{public_base}/app?room={room_code.upper()}&token={join_token}"
             host_display = public_base
             is_tunnel = True
@@ -279,7 +298,7 @@ class LiveSandboxManager:
             "port": port,
             "join_url": join_url,
             "host_display": host_display,
-            "is_public_tunnel": bool(public_base),
+            "is_public_tunnel": bool(is_tunnel),
             "profile_name": self.profile.get("profile_name", "demo_sensitivity"),
         }
 

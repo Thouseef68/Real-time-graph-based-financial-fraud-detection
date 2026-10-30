@@ -8,16 +8,25 @@ from typing import Mapping, Optional, Tuple
 
 
 def derive_client_ip(peer_ip: str, headers: Mapping[str, str]) -> str:
-    """Derive client IP from forwarded headers ONLY when direct peer is loopback (the local tunnel client).
+    """Derive client IP from forwarded headers when direct peer is loopback or trusted private reverse proxy (Render, Cloudflare, etc.).
     
-    If the direct peer is not loopback, forwarded headers are strictly ignored to prevent spoofing.
+    If direct peer is an external untrusted public IP, forwarded headers are ignored to prevent spoofing.
     """
     clean_peer = (peer_ip or "127.0.0.1").strip().lower()
     
-    # Check if direct peer is loopback / local tunnel agent
     is_loopback = clean_peer in ("127.0.0.1", "::1", "localhost", "testclient")
-    
-    if is_loopback:
+    is_trusted = is_loopback
+
+    import os
+    if not is_trusted and bool(os.getenv("RENDER") or os.getenv("RENDER_EXTERNAL_URL") or os.getenv("TRUST_PROXY_HEADERS")):
+        try:
+            ip_obj = ipaddress.ip_address(clean_peer)
+            if ip_obj.is_private:
+                is_trusted = True
+        except Exception:
+            pass
+
+    if is_trusted:
         # Cloudflare tunnel header
         cf_ip = headers.get("cf-connecting-ip")
         if cf_ip and cf_ip.strip():

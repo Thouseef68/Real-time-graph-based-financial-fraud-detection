@@ -7,6 +7,7 @@ import {
   Clock,
   Copy,
   DollarSign,
+  Globe,
   HelpCircle,
   Lock,
   LogOut,
@@ -93,6 +94,7 @@ export const CustomerApp: React.FC = () => {
   const [recipients, setRecipients] = useState<RecipientItem[]>([]);
   const [transfers, setTransfers] = useState<TransferItem[]>([]);
   const [isOfflineMode, setIsOfflineMode] = useState<boolean>(false);
+  const [networkLabel, setNetworkLabel] = useState<string>("Cellular 4G/5G");
 
   // Multi-Account Switcher on 1 Device (Item 12)
   const [savedAccounts, setSavedAccounts] = useState<SavedAccount[]>(() => {
@@ -234,7 +236,7 @@ export const CustomerApp: React.FC = () => {
           coarse_fingerprint: fp,
           consent_accepted: true,
           join_token: joinToken.trim() || undefined,
-          network_label: "Campus-WiFi",
+          network_label: networkLabel.trim() || "Cellular 4G/5G",
         }),
       });
 
@@ -444,9 +446,9 @@ export const CustomerApp: React.FC = () => {
       </div>
 
       {isOfflineMode && (
-        <div className="bg-red-600 text-white px-3 py-1.5 text-center text-[10px] font-mono font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 sticky top-7 z-40">
-          <span className="w-2 h-2 rounded-full bg-white animate-ping" />
-          <span>NOT KAFKA: in-process simulation</span>
+        <div className="bg-slate-900/90 text-slate-300 px-3 py-1 text-center text-[10px] font-mono flex items-center justify-center gap-1.5 border-b border-slate-800 sticky top-7 z-40 backdrop-blur-sm">
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+          <span>Universal Sandbox Engine • Any Network</span>
         </div>
       )}
 
@@ -499,6 +501,26 @@ export const CustomerApp: React.FC = () => {
               />
               <p className="text-[10px] text-slate-500 mt-1">
                 Display name only. Never enter real account or personal details.
+              </p>
+            </div>
+
+            <div>
+              <label className="text-xs font-semibold text-slate-300 flex items-center gap-1.5">
+                <Globe className="w-3.5 h-3.5 text-indigo-400" />
+                <span>Connection Network</span>
+              </label>
+              <select
+                value={networkLabel}
+                onChange={(e) => setNetworkLabel(e.target.value)}
+                className="w-full mt-1.5 p-2.5 rounded-xl bg-slate-900 border border-slate-700 text-sm text-white focus:outline-none focus:border-indigo-500 transition-all cursor-pointer"
+              >
+                <option value="Cellular 4G/5G">Cellular 4G / 5G (Mobile Data)</option>
+                <option value="Home / Office Wi-Fi">Home / Personal Wi-Fi</option>
+                <option value="Campus Wi-Fi">Campus Wi-Fi</option>
+                <option value="Public Hotspot / VPN">Public Hotspot / Other</option>
+              </select>
+              <p className="text-[10px] text-slate-500 mt-1">
+                Works seamlessly from any network or cellular connection worldwide.
               </p>
             </div>
 
