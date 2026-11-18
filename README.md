@@ -6,7 +6,7 @@
 [![XGBoost](https://img.shields.io/badge/XGBoost-v2-FF6600.svg?style=flat)](https://xgboost.readthedocs.io/)
 [![TreeSHAP](https://img.shields.io/badge/Explainability-TreeSHAP-blue.svg)](https://shap.readthedocs.io/)
 [![NetworkX](https://img.shields.io/badge/Graph_Store-NetworkX-green.svg)](https://networkx.org/)
-[![Live Demo on Vercel](https://img.shields.io/badge/Live%20Demo-nasa--hackathon--nisar.vercel.app-brightgreen.svg?style=for-the-badge&logo=vercel)](https://fraudengine-platform.onrender.com/))
+[![Live Demo on Vercel](https://img.shields.io/badge/Live%20Demo.svg?style=for-the-badge&logo=vercel)](https://fraudengine-platform.onrender.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 An enterprise-grade, real-time financial fraud detection engine designed to identify complex mule rings, rapid pass-through layering, high payee fan-in accumulation, and transaction velocity anomalies in sub-millisecond hot-paths.
